@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Botnia Durgotsav | Digital Archive</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #faf7f2;
+      color: #29221d;
+    }
+
+    /* HEADER */
+    header {
+      height: 70px;
+      background: #fffaf4;
+      border-bottom: 1px solid #e7ddd2;
+      display: flex;
+      align-items: center;
+      padding: 0 28px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 260px;
+    }
+
+    .logo-symbol {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: #b52b25;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 21px;
+      font-weight: bold;
+    }
+
+    .logo-text {
+      font-size: 19px;
+      font-weight: 700;
+      color: #74231f;
+    }
+
+    .logo-sub {
+      font-size: 11px;
+      color: #8c8178;
+      margin-top: 3px;
+    }
+
+    /* SEARCH */
+    .search {
+      flex: 1;
+      max-width: 620px;
+      margin: auto;
+      display: flex;
+    }
+
+    .search input {
+      flex: 1;
+      height: 42px;
+      border: 1px solid #cfc4b8;
+      border-right: none;
+      border-radius: 22px 0 0 22px;
+      padding: 0 20px;
+      font-size: 14px;
+      background: white;
+      outline: none;
+    }
+
+    .search button {
+      width: 58px;
+      border: 1px solid #cfc4b8;
+      border-radius: 0 22px 22px 0;
+      background: #f2ebe3;
+      cursor: pointer;
+      font-size: 18px;
+    }
+
+    /* MENU */
+    .menu {
+      min-width: 150px;
+      display: flex;
+      justify-content: flex-end;
+      gap: 20px;
+    }
+
+    .menu span {
+      cursor: pointer;
+      font-size: 14px;
+      color: #5c5148;
+    }
+
+    /* HERO */
+    .hero {
+      background:
+        linear-gradient(
+          rgba(116, 35, 31, 0.91),
+          rgba(116, 35, 31, 0.91)
+        ),
+        repeating-linear-gradient(
+          45deg,
+          transparent,
+          transparent 12px,
+          rgba(255,255,255,0.04) 12px,
+          rgba(255,255,255,0.04) 24px
+        );
+
+      color: white;
+      padding: 52px 7%;
+    }
+
+    .hero h1 {
+      font-family: Georgia, serif;
+      font-size: 42px;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      max-width: 700px;
+      line-height: 1.7;
+      color: #f6dfd4;
+      font-size: 16px;
+    }
+
+    .hero-buttons {
+      margin-top: 25px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .hero-btn {
+      border: none;
+      border-radius: 24px;
+      padding: 12px 22px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .primary {
+      background: #fff;
+      color: #74231f;
+    }
+
+    .secondary {
+      background: transparent;
+      color: white;
+      border: 1px solid rgba(255,255,255,0.6);
+    }
+
+    /* MAIN */
+    main {
+      padding: 35px 5%;
+    }
+
+    .section-title {
+      font-family: Georgia, serif;
+      font-size: 25px;
+      margin-bottom: 18px;
+      color: #74231f;
+    }
+
+    .section-subtitle {
+      color: #82766c;
+      margin-bottom: 25px;
+      font-size: 14px;
+    }
+
+    /* YEAR CARDS */
+    .years {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+      margin-bottom: 45px;
+    }
+
+    .year-card {
+      background: white;
+      border: 1px solid #e5dcd2;
+      border-radius: 12px;
+      padding: 24px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .year-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+    }
+
+    .year {
+      font-size: 30px;
+      font-family: Georgia, serif;
+      color: #b52b25;
+      font-weight: bold;
+    }
+
+    .year-card p {
+      color: #756a61;
+      margin-top: 8px;
+      font-size: 13px;
+    }
+
+    /* VIDEO GRID */
+    .video-grid {
+      display: grid;
+      grid-template-columns:
+        repeat(auto-fill, minmax(260px, 1fr));
+      gap: 28px 20px;
+    }
+
+    .video-card {
+      cursor: pointer;
+    }
+
+    .thumbnail {
+      height: 160px;
+      border-radius: 10px;
+      background:
+        linear-gradient(
+          135deg,
+          #74231f,
+          #c77b55
+        );
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .thumbnail::after {
+      content: "▶";
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.92);
+      color: #74231f;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      padding-left: 3px;
+    }
+
+    .video-info {
+      padding: 11px 3px;
+    }
+
+    .video-title {
+      font-size: 15px;
+      font-weight: 600;
+      line-height: 1.4;
+    }
+
+    .video-meta {
+      color: #81766e;
+      font-size: 12px;
+      margin-top: 6px;
+    }
+
+    /* ARCHIVE */
+    .archive {
+      margin-top: 55px;
+      background: #fff;
+      border: 1px solid #e5dcd2;
+      border-radius: 14px;
+      padding: 30px;
+    }
+
+    .archive-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 17px 0;
+      border-bottom: 1px solid #eee6de;
+    }
+
+    .archive-row:last-child {
+      border-bottom: none;
+    }
+
+    .archive-year {
+      font-weight: bold;
+      font-family: Georgia, serif;
+      font-size: 18px;
+      color: #74231f;
+    }
+
+    .archive-count {
+      color: #81766e;
+      font-size: 13px;
+    }
+
+    /* FOOTER */
+    footer {
+      margin-top: 60px;
+      padding: 35px 5%;
+      background: #332923;
+      color: #d9ccc2;
+      text-align: center;
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    footer strong {
+      color: white;
+    }
+
+    /* MOBILE */
+    @media(max-width: 700px) {
+
+      header {
+        padding: 0 15px;
+      }
+
+      .logo {
+        min-width: auto;
+      }
+
+      .logo-text {
+        font-size: 15px;
+      }
+
+      .logo-sub {
+        display: none;
+      }
+
+      .search {
+        display: none;
+      }
+
+      .menu {
+        min-width: auto;
+      }
+
+      .menu span {
+        font-size: 12px;
+      }
+
+      .hero {
+        padding: 40px 20px;
+      }
+
+      .hero h1 {
+        font-size: 32px;
+      }
+
+      main {
+        padding: 30px 18px;
+      }
+
+      .video-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .thumbnail {
+        height: 200px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+
+  <div class="logo">
+
+    <div class="logo-symbol">
+      ব
+    </div>
+
+    <div>
+      <div class="logo-text">
+        Botnia Durgotsav
+      </div>
+
+      <div class="logo-sub">
+        Digital Archive • স্মৃতি · সংস্কৃতি · ঐতিহ্য
+      </div>
+    </div>
+
+  </div>
+
+  <div class="search">
+
+    <input
+      type="text"
+      id="searchBox"
+      placeholder="Search Puja videos..."
+      onkeyup="searchVideos()"
+    >
+
+    <button>⌕</button>
+
+  </div>
+
+  <div class="menu">
+
+    <span>Home</span>
+    <span>Archive</span>
+
+  </div>
+
+</header>
+
+
+<section class="hero">
+
+  <h1>
+    Botnia Durgotsav
+  </h1>
+
+  <p>
+    A digital home for our Puja, our people and our memories.
+    Explore Durga Puja celebrations, cultural programmes,
+    rituals and moments from across the years.
+  </p>
+
+  <div class="hero-buttons">
+
+    <button class="hero-btn primary"
+      onclick="scrollToVideos()">
+      ▶ Explore Videos
+    </button>
+
+    <button class="hero-btn secondary"
+      onclick="scrollToArchive()">
+      View Archive
+    </button>
+
+  </div>
+
+</section>
+
+
+<main>
+
+  <!-- YEARS -->
+
+  <h2 class="section-title">
+    Puja Through The Years
+  </h2>
+
+  <p class="section-subtitle">
+    Relive the celebrations, rituals and memories of Botnia Durgotsav.
+  </p>
+
+  <div class="years">
+
+    <div class="year-card"
+      onclick="filterYear('2026')">
+
+      <div class="year">2026</div>
+
+      <p>
+        Durga Puja 2026
+      </p>
+
+    </div>
+
+
+    <div class="year-card"
+      onclick="filterYear('2025')">
+
+      <div class="year">2025</div>
+
+      <p>
+        Durga Puja 2025
+      </p>
+
+    </div>
+
+
+    <div class="year-card"
+      onclick="filterYear('2024')">
+
+      <div class="year">2024</div>
+
+      <p>
+        Durga Puja 2024
+      </p>
+
+    </div>
+
+
+    <div class="year-card"
+      onclick="filterYear('all')">
+
+      <div class="year">All</div>
+
+      <p>
+        Explore the complete archive
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <!-- VIDEOS -->
+
+  <section id="videos">
+
+    <h2 class="section-title">
+      Latest Videos
+    </h2>
+
+    <p class="section-subtitle">
+      The newest additions to the Botnia Durgotsav digital archive.
+    </p>
+
+
+    <div class="video-grid" id="videoGrid">
+
+
+      <div class="video-card"
+        data-year="2026"
+        data-title="Mahalaya">
+
+        <div class="thumbnail"></div>
+
+        <div class="video-info">
+
+          <div class="video-title">
+            Mahalaya – Botnia Durgotsav 2026
+          </div>
+
+          <div class="video-meta">
+            2026 • Mahalaya
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="video-card"
+        data-year="2026"
+        data-title="Mahalaya">
+
+        <div class="thumbnail"></div>
+
+        <div class="video-info">
+
+          <div class="video-title">
+            Devi Vandana – Mahalaya Special
+          </div>
+
+          <div class="video-meta">
+            2026 • Cultural
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="video-card"
+        data-year="2026"
+        data-title="Sasthi">
+
+        <div class="thumbnail"></div>
+
+        <div class="video-info">
+
+          <div class="video-title">
+            Sasthi Puja – Botnia Durgotsav
+          </div>
+
+          <div class="video-meta">
+            2026 • Sasthi
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="video-card"
+        data-year="2025"
+        data-title="Dhunuchi">
+
+        <div class="thumbnail"></div>
+
+        <div class="video-info">
+
+          <div class="video-title">
+            Dhunuchi Dance – Durga Puja 2025
+          </div>
+
+          <div class="video-meta">
+            2025 • Cultural Programme
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="video-card"
+        data-year="2025"
+        data-title="Sandhi Puja">
+
+        <div class="thumbnail"></div>
+
+        <div class="video-info">
+
+          <div class="video-title">
+            Sandhi Puja – Durga Puja 2025
+          </div>
+
+          <div class="video-meta">
+            2025 • Ritual
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="video-card"
+        data-year="2024"
+        data-title="Cultural Programme">
+
+        <div class="thumbnail"></div>
+
+        <div class="video-info">
+
+          <div class="video-title">
+            Cultural Programme – Durga Puja 2024
+          </div>
+
+          <div class="video-meta">
+            2024 • Cultural
+          </div>
+
+        </div>
+
+      </div>
+
+
+    </div>
+
+  </section>
+
+
+  <!-- ARCHIVE -->
+
+  <section class="archive" id="archive">
+
+    <h2 class="section-title">
+      Digital Archive
+    </h2>
+
+    <p class="section-subtitle">
+      Our growing collection of Puja memories.
+    </p>
+
+
+    <div class="archive-row">
+
+      <div>
+        <div class="archive-year">2026</div>
+        <div class="archive-count">
+          Current Puja
+        </div>
+      </div>
+
+      <div>→</div>
+
+    </div>
+
+
+    <div class="archive-row">
+
+      <div>
+        <div class="archive-year">2025</div>
+        <div class="archive-count">
+          Puja & Cultural Programmes
+        </div>
+      </div>
+
+      <div>→</div>
+
+    </div>
+
+
+    <div class="archive-row">
+
+      <div>
+        <div class="archive-year">2024</div>
+        <div class="archive-count">
+          Puja Memories
+        </div>
+      </div>
+
+      <div>→</div>
+
+    </div>
+
+  </section>
+
+</main>
+
+
+<footer>
+
+  <strong>Botnia Durgotsav</strong>
+
+  <br>
+
+  স্মৃতি · সংস্কৃতি · ঐতিহ্য
+
+  <br><br>
+
+  Independent Digital Archive of Botnia Durgotsav
+
+  <br>
+
+  © 2026 Botnia Durgotsav
+
+</footer>
+
+
+<script>
+
+  function scrollToVideos() {
+
+    document
+      .getElementById("videos")
+      .scrollIntoView({
+        behavior: "smooth"
+      });
+
+  }
+
+
+  function scrollToArchive() {
+
+    document
+      .getElementById("archive")
+      .scrollIntoView({
+        behavior: "smooth"
+      });
+
+  }
+
+
+  function filterYear(year) {
+
+    const cards =
+      document.querySelectorAll(".video-card");
+
+    cards.forEach(card => {
+
+      if (
+        year === "all" ||
+        card.dataset.year === year
+      ) {
+
+        card.style.display = "";
+
+      } else {
+
+        card.style.display = "none";
+
+      }
+
+    });
+
+    scrollToVideos();
+
+  }
+
+
+  function searchVideos() {
+
+    const query =
+      document
+        .getElementById("searchBox")
+        .value
+        .toLowerCase();
+
+    const cards =
+      document.querySelectorAll(".video-card");
+
+    cards.forEach(card => {
+
+      const title =
+        card.dataset.title.toLowerCase();
+
+      if (title.includes(query)) {
+
+        card.style.display = "";
+
+      } else {
+
+        card.style.display = "none";
+
+      }
+
+    });
+
+  }
+
+</script>
+
+</body>
+</html>
