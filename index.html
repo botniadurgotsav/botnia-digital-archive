@@ -735,44 +735,25 @@
 
 
       <div class="video-card"
-  data-year="2024"
-  data-title="Navami Puja Balidan">
+        data-year="2024"
+        data-title="Navami Puja Balidan"
+        onclick="openVideo('1g3lYVkOCs2Fjvh5NISgbJFtzJt68UBEL', 'Navami Puja 2024 - Balidan')">
 
-  <div class="video-card"
-  data-year="2024"
-  data-title="Navami Puja Balidan"
-  onclick="openVideo('1g3lYVkOCs2Fjvh5NISgbJFtzJt68UBEL', 'Navami Puja 2024 - Balidan')">
+        <div class="thumbnail"></div>
 
-  <div class="thumbnail">
-  </div>
+        <div class="video-info">
 
-  <div class="video-info">
+          <div class="video-title">
+            Navami Puja 2024 - Balidan
+          </div>
 
-    <div class="video-title">
-      Navami Puja 2024 - Balidan
-    </div>
+          <div class="video-meta">
+            2024 • Navami • Balidan
+          </div>
 
-    <div class="video-meta">
-      2024 • Navami • Balidan
-    </div>
+        </div>
 
-  </div>
-
-</div>
-
-  <div class="video-info">
-
-    <div class="video-title">
-      Navami Puja 2024 - Balidan
-    </div>
-
-    <div class="video-meta">
-      2024 • Navami • Balidan
-    </div>
-
-  </div>
-
-</div>
+      </div>
 
 
     </div>
@@ -857,63 +838,91 @@
 
 </footer>
 
-/* =========================
-   VIDEO MODAL
-   ========================= */
+<!-- Video Modal -->
+<div id="videoModal" class="video-modal">
 
-function openVideo(fileId, title) {
+  <div class="video-modal-content">
 
-  const modal = document.getElementById("videoModal");
-  const frame = document.getElementById("videoModalFrame");
-  const titleElement = document.getElementById("videoModalTitle");
+    <button class="video-modal-close" onclick="closeVideo()">
+      ×
+    </button>
 
-  titleElement.textContent = title;
+    <div class="video-modal-title" id="videoModalTitle">
+      Video
+    </div>
 
-  frame.src =
-    "https://drive.google.com/file/d/" +
-    fileId +
-    "/preview";
+    <div class="video-modal-player">
+      <iframe
+        id="videoModalFrame"
+        src=""
+        allow="autoplay"
+        allowfullscreen>
+      </iframe>
+    </div>
 
-  modal.style.display = "flex";
+  </div>
 
-  document.body.style.overflow = "hidden";
-}
+</div>
 
-
-function closeVideo() {
-
-  const modal = document.getElementById("videoModal");
-  const frame = document.getElementById("videoModalFrame");
-
-  frame.src = "";
-
-  modal.style.display = "none";
-
-  document.body.style.overflow = "";
-}
-
-
-/* Close when clicking outside the video */
-
-document.getElementById("videoModal").addEventListener("click", function(event) {
-
-  if (event.target === this) {
-    closeVideo();
-  }
-
-});
-
-
-/* Close with ESC key */
-
-document.addEventListener("keydown", function(event) {
-
-  if (event.key === "Escape") {
-    closeVideo();
-  }
-
-});
 <script>
+
+  /* =========================
+     VIDEO MODAL
+     ========================= */
+
+  function openVideo(fileId, title) {
+
+    const modal = document.getElementById("videoModal");
+    const frame = document.getElementById("videoModalFrame");
+    const titleElement = document.getElementById("videoModalTitle");
+
+    titleElement.textContent = title;
+
+    frame.src =
+      "https://drive.google.com/file/d/" +
+      fileId +
+      "/preview";
+
+    modal.style.display = "flex";
+
+    document.body.style.overflow = "hidden";
+  }
+
+
+  function closeVideo() {
+
+    const modal = document.getElementById("videoModal");
+    const frame = document.getElementById("videoModalFrame");
+
+    frame.src = "";
+
+    modal.style.display = "none";
+
+    document.body.style.overflow = "";
+  }
+
+
+  /* Close when clicking outside the video */
+
+  document.getElementById("videoModal").addEventListener("click", function(event) {
+
+    if (event.target === this) {
+      closeVideo();
+    }
+
+  });
+
+
+  /* Close with ESC key */
+
+  document.addEventListener("keydown", function(event) {
+
+    if (event.key === "Escape") {
+      closeVideo();
+    }
+
+  });
+
 
   function scrollToVideos() {
 
@@ -996,31 +1005,7 @@ document.addEventListener("keydown", function(event) {
 
 </script>
 
-<!-- Video Modal -->
-<div id="videoModal" class="video-modal">
 
-  <div class="video-modal-content">
-
-    <button class="video-modal-close" onclick="closeVideo()">
-      ×
-    </button>
-
-    <div class="video-modal-title" id="videoModalTitle">
-      Video
-    </div>
-
-    <div class="video-modal-player">
-      <iframe
-        id="videoModalFrame"
-        src=""
-        allow="autoplay"
-        allowfullscreen>
-      </iframe>
-    </div>
-
-  </div>
-
-</div>
 
   
 </body>
