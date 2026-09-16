@@ -857,7 +857,62 @@
 
 </footer>
 
+/* =========================
+   VIDEO MODAL
+   ========================= */
 
+function openVideo(fileId, title) {
+
+  const modal = document.getElementById("videoModal");
+  const frame = document.getElementById("videoModalFrame");
+  const titleElement = document.getElementById("videoModalTitle");
+
+  titleElement.textContent = title;
+
+  frame.src =
+    "https://drive.google.com/file/d/" +
+    fileId +
+    "/preview";
+
+  modal.style.display = "flex";
+
+  document.body.style.overflow = "hidden";
+}
+
+
+function closeVideo() {
+
+  const modal = document.getElementById("videoModal");
+  const frame = document.getElementById("videoModalFrame");
+
+  frame.src = "";
+
+  modal.style.display = "none";
+
+  document.body.style.overflow = "";
+}
+
+
+/* Close when clicking outside the video */
+
+document.getElementById("videoModal").addEventListener("click", function(event) {
+
+  if (event.target === this) {
+    closeVideo();
+  }
+
+});
+
+
+/* Close with ESC key */
+
+document.addEventListener("keydown", function(event) {
+
+  if (event.key === "Escape") {
+    closeVideo();
+  }
+
+});
 <script>
 
   function scrollToVideos() {
