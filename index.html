@@ -656,15 +656,27 @@
   data-year="2024"
   data-title="Navami Puja Balidan">
 
-  <div class="video-player">
+  <div class="video-card"
+  data-year="2024"
+  data-title="Navami Puja Balidan"
+  onclick="openVideo('1g3lYVkOCs2Fjvh5NISgbJFtzJt68UBEL', 'Navami Puja 2024 - Balidan')">
 
-    <iframe
-      src="https://drive.google.com/file/d/1g3lYVkOCs2Fjvh5NISgbJFtzJt68UBEL/preview"
-      allow="autoplay"
-      allowfullscreen>
-    </iframe>
+  <div class="thumbnail">
+  </div>
+
+  <div class="video-info">
+
+    <div class="video-title">
+      Navami Puja 2024 - Balidan
+    </div>
+
+    <div class="video-meta">
+      2024 • Navami • Balidan
+    </div>
 
   </div>
+
+</div>
 
   <div class="video-info">
 
@@ -847,5 +859,32 @@
 
 </script>
 
+<!-- Video Modal -->
+<div id="videoModal" class="video-modal">
+
+  <div class="video-modal-content">
+
+    <button class="video-modal-close" onclick="closeVideo()">
+      ×
+    </button>
+
+    <div class="video-modal-title" id="videoModalTitle">
+      Video
+    </div>
+
+    <div class="video-modal-player">
+      <iframe
+        id="videoModalFrame"
+        src=""
+        allow="autoplay"
+        allowfullscreen>
+      </iframe>
+    </div>
+
+  </div>
+
+</div>
+
+  
 </body>
 </html>
