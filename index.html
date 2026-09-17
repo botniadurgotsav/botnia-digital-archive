@@ -29,14 +29,601 @@ footer{text-align:center;padding:44px;background:#231411;color:#d2c0b6;font-size
 <footer><b>Botnia Durgotsav</b><br>স্মৃতি · সংস্কৃতি · ঐতিহ্য<br><br>Independent Digital Heritage Archive of Botnia Durgotsav<br>© 2026 Botnia Durgotsav</footer>
 <div id="modal" class="modal" onclick="if(event.target===this)closeModal()"><div class="modalIn"><button class="close" onclick="closeModal()">×</button><div id="modalTitle" class="modalTitle"></div><div id="frame" class="frame"></div></div></div>
 <script>
-const S={media:[],year:'all',type:'all',day:'all'};
-const esc=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
-const js=s=>String(s??'').replace(/\\/g,'\\\\').replace(/'/g,"\\'").replace(/\r?\n/g,' ');
-async function load(){try{const r=await fetch('/api/archive');if(!r.ok)throw Error(r.status);const d=await r.json();S.media=d.media||[];years();stats();hero();render()}catch(e){console.error(e);document.getElementById('grid').innerHTML='<div class="empty"><b>Archive service is not connected yet.</b><br><br>Deploy the included Cloudflare Function and configure the GOOGLE_DRIVE_API_KEY secret.</div>'}}
-function years(){const ys=[...new Set(S.media.map(x=>x.year).filter(y=>/^\d{4}$/.test(y)))].sort((a,b)=>b-a);document.getElementById('years').innerHTML=ys.map(y=>{const a=S.media.filter(x=>x.year===y),v=a.filter(x=>x.type==='video').length,p=a.filter(x=>x.type==='photo').length;return `<div class="year" data-v="${y}" onclick="setYear('${y}')"><div class="arrow">↗</div><strong>${y}</strong><small>${v} videos · ${p} photos</small></div>`}).join('')+`<div class="year" data-v="all" onclick="setYear('all')"><div class="arrow">↗</div><strong>All</strong><small>${S.media.length} archived memories</small></div>`}
-function stats(){const ys=new Set(S.media.map(x=>x.year).filter(y=>/^\d{4}$/.test(y))),v=S.media.filter(x=>x.type==='video').length,p=S.media.filter(x=>x.type==='photo').length;[['sYears',ys.size],['sVideos',v],['sPhotos',p],['aYears',ys.size],['aMedia',S.media.length]].forEach(([i,v])=>document.getElementById(i).textContent=v)}
-function hero(){const x=S.media.find(x=>x.type==='photo'&&x.thumbnailLink)||S.media.find(x=>x.thumbnailLink);if(x){const e=document.getElementById('heroImg');e.style.backgroundImage=`url("${x.thumbnailLink}")`;e.classList.add('ready')}}
-function render(){const q=document.getElementById('q').value.toLowerCase();const a=S.media.filter(x=>(S.year==='all'||x.year===S.year)&&(S.type==='all'||x.type===S.type)&&(S.day==='all'||x.day===S.day)&&(!q||`${x.name} ${x.year} ${x.day} ${x.type}`.toLowerCase().includes(q))).sort((a,b)=>(b.modifiedTime||'').localeCompare(a.modifiedTime||''));document.getElementById('grid').innerHTML=a.length?a.map(x=>`<article class="card" onclick="openMedia('${js(x.id)}','${js(x.name)}','${js(x.type)}','${js(x.thumbnailLink||'')}')"><div class="visual">${x.thumbnailLink?`<img loading="lazy" src="${esc(x.thumbnailLink)}" alt="${esc(x.name)}">`:''}${x.type==='video'?'<div class="play">▶</div>':'<div class="badge">PHOTO</div>'}</div><div class="body"><div class="title">${esc(x.name)}</div><div class="meta">${esc(x.year)} · ${esc(x.day)} · ${esc(x.type)}</div></div></article>`).join(''):'<div class="empty">No memories match these filters yet.</div>'}
-function setYear(v){S.year=v;document.querySelectorAll('.year').forEach(x=>x.classList.toggle('active',x.dataset.v===v));render();toMedia()}function setType(v){S.type=v;document.querySelectorAll('#types .chip').forEach(x=>x.classList.toggle('active',x.dataset.v===v));render()}function setDay(v){S.day=v;document.querySelectorAll('#days .chip').forEach(x=>x.classList.toggle('active',x.dataset.v===v));render()}
-function openMedia(id,t,type,thumb){document.getElementById('modalTitle').textContent=t;document.getElementById('frame').innerHTML=type==='video'?`<iframe src="https://drive.google.com/file/d/${encodeURIComponent(id)}/preview" allow="autoplay; fullscreen" allowfullscreen></iframe>`:`<img src="${esc(thumb?thumb.replace(/=s\d+$/,'=s1600'):`https://drive.google.com/thumbnail?id=${encodeURIComponent(id)}&sz=w1600`)}" alt="${esc(t)}">`;document.getElementById('modal').classList.add('open');document.body.style.overflow='hidden'}function closeModal(){document.getElementById('modal').classList.remove('open');document.getElementById('frame').innerHTML='';document.body.style.overflow=''}document.addEventListener('keydown',e=>e.key==='Escape'&&closeModal());function toMedia(){document.getElementById('memories').scrollIntoView()}function toArchive(){document.getElementById('archive').scrollIntoView()}function home(){scrollTo({top:0,behavior:'smooth'})}load();
+const ARCHIVE_YEARS = ['2026', '2025', '2024'];
+
+const S = {
+  media: [],
+  year: 'all',
+  type: 'all',
+  day: 'all'
+};
+
+const esc = s =>
+  String(s ?? '').replace(
+    /[&<>"']/g,
+    m => ({
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      '"': '&quot;',
+      "'": '&#39;'
+    }[m])
+  );
+
+const js = s =>
+  String(s ?? '')
+    .replace(/\\/g, '\\\\')
+    .replace(/'/g, "\\'")
+    .replace(/\r?\n/g, ' ');
+
+
+/* =========================================================
+   LOAD COMPLETE ARCHIVE
+   ---------------------------------------------------------
+   Cloudflare intentionally serves one year per API request.
+   This keeps each Worker invocation safely below the
+   Google Drive / Cloudflare subrequest limit.
+   ========================================================= */
+
+async function load() {
+
+  const grid = document.getElementById('grid');
+
+  grid.innerHTML =
+    '<div class="empty">Loading the Botnia Digital Archive…</div>';
+
+  try {
+
+    const results = await Promise.all(
+      ARCHIVE_YEARS.map(async year => {
+
+        const response = await fetch(
+          `/api/archive?year=${encodeURIComponent(year)}`
+        );
+
+        if (!response.ok) {
+          throw new Error(
+            `Archive request failed for ${year}: ${response.status}`
+          );
+        }
+
+        const data = await response.json();
+
+        return Array.isArray(data.media)
+          ? data.media
+          : [];
+      })
+    );
+
+    /*
+     * Combine:
+     * 2026 + 2025 + 2024
+     * into one collection for the website.
+     */
+    S.media = results.flat();
+
+    /*
+     * Remove accidental duplicates by Drive File ID.
+     */
+    S.media = [
+      ...new Map(
+        S.media.map(item => [item.id, item])
+      ).values()
+    ];
+
+    /*
+     * Newest archive material first.
+     */
+    S.media.sort((a, b) => {
+
+      const yearA = parseInt(a.year) || 0;
+      const yearB = parseInt(b.year) || 0;
+
+      if (yearA !== yearB) {
+        return yearB - yearA;
+      }
+
+      return (b.modifiedTime || '')
+        .localeCompare(a.modifiedTime || '');
+    });
+
+    years();
+    stats();
+    hero();
+    render();
+
+  } catch (error) {
+
+    console.error(
+      'Unable to load Botnia Digital Archive:',
+      error
+    );
+
+    grid.innerHTML = `
+      <div class="empty">
+        <b>The Digital Archive is temporarily unavailable.</b>
+        <br><br>
+        Please refresh the page in a few moments.
+      </div>
+    `;
+  }
+}
+
+
+/* =========================================================
+   YEAR CARDS
+   ========================================================= */
+
+function years() {
+
+  /*
+   * Always show the three official archive years,
+   * even when a year currently contains zero media.
+   */
+
+  const html = ARCHIVE_YEARS.map(year => {
+
+    const items = S.media.filter(
+      item => item.year === year
+    );
+
+    const videos = items.filter(
+      item => item.type === 'video'
+    ).length;
+
+    const photos = items.filter(
+      item => item.type === 'photo'
+    ).length;
+
+    return `
+      <div
+        class="year"
+        data-v="${year}"
+        onclick="setYear('${year}')"
+      >
+        <div class="arrow">↗</div>
+
+        <strong>${year}</strong>
+
+        <small>
+          ${videos} ${videos === 1 ? 'video' : 'videos'}
+          ·
+          ${photos} ${photos === 1 ? 'photo' : 'photos'}
+        </small>
+      </div>
+    `;
+  }).join('');
+
+  const allCard = `
+    <div
+      class="year"
+      data-v="all"
+      onclick="setYear('all')"
+    >
+      <div class="arrow">↗</div>
+
+      <strong>All</strong>
+
+      <small>
+        ${S.media.length}
+        ${S.media.length === 1 ? 'archived memory' : 'archived memories'}
+      </small>
+    </div>
+  `;
+
+  document.getElementById('years').innerHTML =
+    html + allCard;
+}
+
+
+/* =========================================================
+   ARCHIVE STATISTICS
+   ========================================================= */
+
+function stats() {
+
+  const videos = S.media.filter(
+    item => item.type === 'video'
+  ).length;
+
+  const photos = S.media.filter(
+    item => item.type === 'photo'
+  ).length;
+
+  /*
+   * Archive years reflects the configured archive,
+   * including years that currently contain no media.
+   */
+
+  const values = [
+    ['sYears', ARCHIVE_YEARS.length],
+    ['sVideos', videos],
+    ['sPhotos', photos],
+    ['aYears', ARCHIVE_YEARS.length],
+    ['aMedia', S.media.length]
+  ];
+
+  values.forEach(([id, value]) => {
+    const element = document.getElementById(id);
+
+    if (element) {
+      element.textContent = value;
+    }
+  });
+}
+
+
+/* =========================================================
+   HERO IMAGE
+   ========================================================= */
+
+function hero() {
+
+  /*
+   * Prefer a photograph for the hero.
+   * If none exists yet, use any available media thumbnail.
+   */
+
+  const item =
+    S.media.find(
+      x => x.type === 'photo' && x.thumbnailLink
+    ) ||
+    S.media.find(
+      x => x.thumbnailLink
+    );
+
+  if (!item) return;
+
+  const heroImage =
+    document.getElementById('heroImg');
+
+  heroImage.style.backgroundImage =
+    `url("${item.thumbnailLink}")`;
+
+  heroImage.classList.add('ready');
+}
+
+
+/* =========================================================
+   MEDIA GRID
+   ========================================================= */
+
+function render() {
+
+  const searchBox =
+    document.getElementById('q');
+
+  const query =
+    (searchBox?.value || '')
+      .trim()
+      .toLowerCase();
+
+  const filtered = S.media
+    .filter(item => {
+
+      const yearMatch =
+        S.year === 'all' ||
+        item.year === S.year;
+
+      const typeMatch =
+        S.type === 'all' ||
+        item.type === S.type;
+
+      const dayMatch =
+        S.day === 'all' ||
+        item.day === S.day;
+
+      const searchText = `
+        ${item.name || ''}
+        ${item.year || ''}
+        ${item.day || ''}
+        ${item.type || ''}
+      `.toLowerCase();
+
+      const searchMatch =
+        !query ||
+        searchText.includes(query);
+
+      return (
+        yearMatch &&
+        typeMatch &&
+        dayMatch &&
+        searchMatch
+      );
+    })
+    .sort((a, b) => {
+
+      const yearA =
+        parseInt(a.year) || 0;
+
+      const yearB =
+        parseInt(b.year) || 0;
+
+      if (yearA !== yearB) {
+        return yearB - yearA;
+      }
+
+      return (b.modifiedTime || '')
+        .localeCompare(a.modifiedTime || '');
+    });
+
+  const grid =
+    document.getElementById('grid');
+
+  if (!filtered.length) {
+
+    grid.innerHTML = `
+      <div class="empty">
+        No memories match these filters yet.
+      </div>
+    `;
+
+    return;
+  }
+
+  grid.innerHTML =
+    filtered.map(item => {
+
+      const thumbnail =
+        item.thumbnailLink
+          ? `
+            <img
+              loading="lazy"
+              src="${esc(item.thumbnailLink)}"
+              alt="${esc(item.name)}"
+            >
+          `
+          : '';
+
+      const mediaIndicator =
+        item.type === 'video'
+          ? '<div class="play">▶</div>'
+          : '<div class="badge">PHOTO</div>';
+
+      return `
+        <article
+          class="card"
+          onclick="
+            openMedia(
+              '${js(item.id)}',
+              '${js(item.name)}',
+              '${js(item.type)}',
+              '${js(item.thumbnailLink || '')}'
+            )
+          "
+        >
+
+          <div class="visual">
+
+            ${thumbnail}
+
+            ${mediaIndicator}
+
+          </div>
+
+          <div class="body">
+
+            <div class="title">
+              ${esc(item.name)}
+            </div>
+
+            <div class="meta">
+              ${esc(item.year)}
+              ·
+              ${esc(item.day)}
+              ·
+              ${esc(item.type)}
+            </div>
+
+          </div>
+
+        </article>
+      `;
+    }).join('');
+}
+
+
+/* =========================================================
+   FILTERS
+   ========================================================= */
+
+function setYear(value) {
+
+  S.year = value;
+
+  document
+    .querySelectorAll('.year')
+    .forEach(element => {
+
+      element.classList.toggle(
+        'active',
+        element.dataset.v === value
+      );
+
+    });
+
+  render();
+  toMedia();
+}
+
+
+function setType(value) {
+
+  S.type = value;
+
+  document
+    .querySelectorAll('#types .chip')
+    .forEach(element => {
+
+      element.classList.toggle(
+        'active',
+        element.dataset.v === value
+      );
+
+    });
+
+  render();
+}
+
+
+function setDay(value) {
+
+  S.day = value;
+
+  document
+    .querySelectorAll('#days .chip')
+    .forEach(element => {
+
+      element.classList.toggle(
+        'active',
+        element.dataset.v === value
+      );
+
+    });
+
+  render();
+}
+
+
+/* =========================================================
+   MEDIA VIEWER
+   ========================================================= */
+
+function openMedia(
+  id,
+  title,
+  type,
+  thumbnail
+) {
+
+  document.getElementById(
+    'modalTitle'
+  ).textContent = title;
+
+  const frame =
+    document.getElementById('frame');
+
+  if (type === 'video') {
+
+    /*
+     * Video is streamed using Google's Drive preview player.
+     * No YouTube dependency.
+     */
+
+    frame.innerHTML = `
+      <iframe
+        src="https://drive.google.com/file/d/${encodeURIComponent(id)}/preview"
+        allow="autoplay; fullscreen"
+        allowfullscreen
+      ></iframe>
+    `;
+
+  } else {
+
+    /*
+     * Request a larger image for the photo viewer.
+     */
+
+    let largeImage = thumbnail;
+
+    if (largeImage) {
+
+      largeImage =
+        largeImage.replace(
+          /=s\d+$/,
+          '=s1600'
+        );
+
+    } else {
+
+      largeImage =
+        `https://drive.google.com/thumbnail?id=${encodeURIComponent(id)}&sz=w1600`;
+    }
+
+    frame.innerHTML = `
+      <img
+        src="${esc(largeImage)}"
+        alt="${esc(title)}"
+      >
+    `;
+  }
+
+  document
+    .getElementById('modal')
+    .classList.add('open');
+
+  document.body.style.overflow =
+    'hidden';
+}
+
+
+function closeModal() {
+
+  document
+    .getElementById('modal')
+    .classList.remove('open');
+
+  document.getElementById(
+    'frame'
+  ).innerHTML = '';
+
+  document.body.style.overflow = '';
+}
+
+
+/* =========================================================
+   NAVIGATION
+   ========================================================= */
+
+function toMedia() {
+
+  document
+    .getElementById('memories')
+    .scrollIntoView({
+      behavior: 'smooth'
+    });
+}
+
+
+function toArchive() {
+
+  document
+    .getElementById('archive')
+    .scrollIntoView({
+      behavior: 'smooth'
+    });
+}
+
+
+function home() {
+
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+}
+
+
+/* =========================================================
+   KEYBOARD
+   ========================================================= */
+
+document.addEventListener(
+  'keydown',
+  event => {
+
+    if (event.key === 'Escape') {
+      closeModal();
+    }
+
+  }
+);
+
+
+/* =========================================================
+   START ARCHIVE
+   ========================================================= */
+
+load();
+
 </script></body></html>
