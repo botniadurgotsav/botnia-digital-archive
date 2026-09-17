@@ -1,22 +1,4 @@
-const ARCHIVE_ROOT = "1QISCTNl0nkEsHvsnqTbjvmUKIvdpi7xx";
-
-const YEAR_FOLDERS = [
-  { year: "2026", id: "1ehSBZSa0RlVpzXFBcV2KiaIFATXC9J1N" },
-  { year: "2025", id: "1dOBiACjDyO--2UdaQAvIr8yZqMHw0N25" },
-  { year: "2024", id: "18jsP8Xgyu6dNyavr-ALWfNOMu3YZ9ugn" },
-  { year: "Previous Years", id: "1lIcknGdjxpzsvIl2pZ5mG6DRwbbRDCah" }
-];
-
-const FOLDER = "application/vnd.google-apps.folder";
-
-const DAYS = [
-  "Mahalaya",
-  "Sasthi",
-  "Saptami",
-  "Ashtami",
-  "Navami",
-  "Dashami"
-];
+const TEST_FOLDER_ID = "1xfok8_8LrYz1ZG3thlayrzYsED_-t6x-";
 
 export async function onRequestGet(context) {
   const key = context.env.GOOGLE_DRIVE_API_KEY;
@@ -29,29 +11,37 @@ export async function onRequestGet(context) {
   }
 
   try {
-    const media = [];
+    const files = await listFolder(TEST_FOLDER_ID, key);
 
-    for (const yearFolder of YEAR_FOLDERS) {
-      await scanYear(
-        yearFolder.id,
-        yearFolder.year,
-        key,
-        media
-      );
-    }
+    const media = files
+      .filter(file =>
+        file.mimeType?.startsWith("video/") ||
+        file.mimeType?.startsWith("image/")
+      )
+      .map(file => ({
+        id: file.id,
+        name: cleanName(file.name),
+        mimeType: file.mimeType,
+        type: file.mimeType.startsWith("video/")
+          ? "video"
+          : "photo",
 
-    media.sort((a, b) => {
-      const yearA = parseInt(a.year) || 0;
-      const yearB = parseInt(b.year) || 0;
+        year: "2024",
+        day: "Navami",
 
-      if (yearA !== yearB) {
-        return yearB - yearA;
-      }
+        thumbnailLink: file.thumbnailLink || "",
+        createdTime: file.createdTime || "",
+        modifiedTime: file.modifiedTime || "",
 
-      return (b.createdTime || "").localeCompare(
-        a.createdTime || ""
-      );
-    });
+        videoMediaMetadata:
+          file.videoMediaMetadata || null,
+
+        path: [
+          "2024",
+          "Videos",
+          "Navami"
+        ]
+      }));
 
     return json(
       {
@@ -61,12 +51,12 @@ export async function onRequestGet(context) {
       },
       200,
       {
-        "Cache-Control": "public,max-age=300,s-maxage=900"
+        "Cache-Control": "no-store"
       }
     );
 
   } catch (error) {
-    console.error("Archive scan failed:", error);
+    console.error("Drive test failed:", error);
 
     return json(
       {
@@ -79,216 +69,46 @@ export async function onRequestGet(context) {
 }
 
 
-/* -------------------------------------------------
-   Scan one year
-------------------------------------------------- */
-
-async function scanYear(yearId, year, key, media) {
-
-  const yearContents = await listFolder(yearId, key);
-
-  /*
-   * Expected structure:
-   *
-   * YEAR
-   *   ├── Videos
-   *   └── Photos
-   */
-
-  for (const category of yearContents) {
-
-    if (category.mimeType !== FOLDER) {
-      continue;
-    }
-
-    const categoryName = category.name.toLowerCase();
-
-    if (
-      categoryName !== "videos" &&
-      categoryName !== "photos"
-    ) {
-      continue;
-    }
-
-    const categoryContents =
-      await listFolder(category.id, key);
-
-    /*
-     * Expected:
-     *
-     * Videos
-     *   ├── Mahalaya
-     *   ├── Sasthi
-     *   ├── Saptami
-     *   ├── Ashtami
-     *   ├── Navami
-     *   └── Dashami
-     */
-
-    for (const dayFolder of categoryContents) {
-
-      if (dayFolder.mimeType !== FOLDER) {
-        continue;
-      }
-
-      const day =
-        DAYS.find(
-          d =>
-            d.toLowerCase() ===
-            dayFolder.name.toLowerCase()
-        ) || dayFolder.name;
-
-      const files =
-        await listFolder(dayFolder.id, key);
-
-      for (const file of files) {
-
-        addMedia(
-          file,
-          year,
-          day,
-          category.name,
-          media
-        );
-      }
-    }
-  }
-}
-
-
-/* -------------------------------------------------
-   Add media item
-------------------------------------------------- */
-
-function addMedia(
-  file,
-  year,
-  day,
-  category,
-  media
-) {
-
-  const type =
-    file.mimeType?.startsWith("video/")
-      ? "video"
-      : file.mimeType?.startsWith("image/")
-      ? "photo"
-      : null;
-
-  if (!type) {
-    return;
-  }
-
-  media.push({
-    id: file.id,
-    name: cleanName(file.name),
-    mimeType: file.mimeType,
-    type,
-    year,
-    day,
-
-    thumbnailLink:
-      file.thumbnailLink || "",
-
-    createdTime:
-      file.createdTime || "",
-
-    modifiedTime:
-      file.modifiedTime || "",
-
-    videoMediaMetadata:
-      file.videoMediaMetadata || null,
-
-    path: [
-      year,
-      category,
-      day
-    ]
-  });
-}
-
-
-/* -------------------------------------------------
-   Google Drive folder listing
-
-   IMPORTANT:
-   One parent folder per query.
-------------------------------------------------- */
-
 async function listFolder(folderId, key) {
 
-  let pageToken = "";
-  const all = [];
+  const params = new URLSearchParams({
+    q: `'${folderId}' in parents and trashed=false`,
 
-  do {
+    fields:
+      "files(" +
+      "id," +
+      "name," +
+      "mimeType," +
+      "thumbnailLink," +
+      "createdTime," +
+      "modifiedTime," +
+      "videoMediaMetadata" +
+      ")",
 
-    const params = new URLSearchParams({
-      q:
-        `'${folderId}' in parents ` +
-        `and trashed=false`,
+    pageSize: "1000",
+    key
+  });
 
-      fields:
-        "nextPageToken," +
-        "files(" +
-        "id," +
-        "name," +
-        "mimeType," +
-        "thumbnailLink," +
-        "createdTime," +
-        "modifiedTime," +
-        "videoMediaMetadata" +
-        ")",
+  const response = await fetch(
+    "https://www.googleapis.com/drive/v3/files?" +
+    params.toString()
+  );
 
-      pageSize: "1000",
-      key
-    });
+  if (!response.ok) {
+    const errorText = await response.text();
 
-    if (pageToken) {
-      params.set(
-        "pageToken",
-        pageToken
-      );
-    }
-
-    const response = await fetch(
-      "https://www.googleapis.com/drive/v3/files?" +
-      params.toString()
+    throw new Error(
+      `Drive API ${response.status}: ${errorText}`
     );
+  }
 
-    if (!response.ok) {
+  const data = await response.json();
 
-      const errorText =
-        await response.text();
-
-      throw new Error(
-        `Drive API ${response.status} ` +
-        `for folder ${folderId}: ` +
-        errorText
-      );
-    }
-
-    const data =
-      await response.json();
-
-    all.push(
-      ...(data.files || [])
-    );
-
-    pageToken =
-      data.nextPageToken || "";
-
-  } while (pageToken);
-
-  return all;
+  return data.files || [];
 }
 
 
-/* -------------------------------------------------
-   Helpers
-------------------------------------------------- */
-
 function cleanName(name) {
-
   return (name || "").replace(
     /\.(mp4|mov|m4v|webm|jpg|jpeg|png|webp|gif)$/i,
     ""
@@ -296,12 +116,7 @@ function cleanName(name) {
 }
 
 
-function json(
-  body,
-  status = 200,
-  headers = {}
-) {
-
+function json(body, status = 200, headers = {}) {
   return new Response(
     JSON.stringify(body),
     {
