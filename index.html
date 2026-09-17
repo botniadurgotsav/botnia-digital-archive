@@ -1,629 +1,197 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#681311"><title>Botnia Durgotsav | Digital Heritage</title>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#6f1713">
+<title>Kollol Puja Samiti | Botnia Durgotsav Digital Heritage</title>
 <style>
-:root{--red:#821b17;--deep:#4b0d0c;--gold:#d5a64b;--cream:#fff9f0;--paper:#f4eadf;--ink:#291b16;--muted:#77675e;--line:#e7d8ca;--shadow:0 18px 55px #4d1e111c}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--cream);color:var(--ink);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif}button,input{font:inherit}.top{padding:8px;text-align:center;background:#35100e;color:#f3d79e;font-size:10px;letter-spacing:.16em;text-transform:uppercase}
-header{height:76px;display:flex;align-items:center;padding:0 5%;position:sticky;top:0;z-index:20;background:#fff9f0f2;backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}.brand{display:flex;align-items:center;gap:12px}.mark{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(145deg,#d15b38,var(--red));color:white;font:24px Georgia;box-shadow:0 8px 22px #821b1730}.name{font:700 20px Georgia;color:var(--deep)}.sub{font-size:9px;letter-spacing:.12em;color:var(--muted);margin-top:3px}nav{margin-left:auto;display:flex;gap:22px}nav button{border:0;background:none;cursor:pointer;color:#5d4b41;font-weight:700;font-size:12px}.outline{border:1px solid var(--red)!important;border-radius:999px!important;padding:10px 15px!important;color:var(--red)!important}
-.hero{min-height:620px;position:relative;display:grid;align-items:end;overflow:hidden;background:radial-gradient(circle at 82% 18%,#d5a64b55,transparent 28%),linear-gradient(120deg,#3a0807,#781512 50%,#bd4c2d)}.heroImg{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:.6s}.heroImg.ready{opacity:.5}.shade{position:absolute;inset:0;background:linear-gradient(90deg,#280505f2 0%,#280505b0 48%,#28050522),linear-gradient(0deg,#280505c7,transparent 58%)}.heroIn{position:relative;z-index:2;width:min(1200px,90%);margin:auto;padding:110px 0 72px;color:white}.eyebrow{font-size:10px;letter-spacing:.19em;text-transform:uppercase;color:#f3d79e;font-weight:800}.hero h1{font:500 clamp(48px,7vw,90px)/.98 Georgia;margin:18px 0 0;max-width:850px;letter-spacing:-.035em}.hero h1 em{color:#f3d79e}.hero p{font:clamp(17px,2vw,21px)/1.65 Georgia;max-width:690px;color:#f6e5dc}.actions{display:flex;gap:10px;flex-wrap:wrap}.btn{padding:13px 20px;border-radius:999px;border:1px solid #ffffff80;cursor:pointer;font-weight:800}.primary{background:white;color:var(--deep)}.ghost{background:#ffffff12;color:white}.stats{display:flex;gap:34px;margin-top:48px;flex-wrap:wrap}.stat b{display:block;font:28px Georgia}.stat span{font-size:9px;letter-spacing:.13em;text-transform:uppercase;color:#e9cfc4}
-main{width:min(1200px,90%);margin:auto;padding:70px 0 90px}.head{display:flex;justify-content:space-between;gap:24px;align-items:end;margin-bottom:24px}.kicker{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#b64a2e;font-weight:800}.head h2,.heritage h2{font:500 clamp(30px,4vw,45px) Georgia;color:var(--deep);margin:8px 0 0}.head p{max-width:520px;color:var(--muted);font-size:13px;line-height:1.7}
-.years{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:70px}.year{min-height:165px;padding:21px;border:1px solid var(--line);border-radius:18px;background:white;cursor:pointer;position:relative;overflow:hidden;transition:.25s}.year:hover,.year.active{transform:translateY(-4px);box-shadow:var(--shadow)}.year strong{font:40px Georgia;color:var(--red)}.year small{display:block;color:var(--muted);margin-top:13px}.arrow{position:absolute;right:18px;top:18px;width:34px;height:34px;border-radius:50%;background:var(--paper);display:grid;place-items:center;color:var(--red)}
-.toolbar{display:flex;justify-content:space-between;gap:15px;align-items:center;flex-wrap:wrap}.chips{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0}.chip{border:1px solid var(--line);background:white;border-radius:999px;padding:9px 13px;font-size:11px;font-weight:800;color:#66554b;cursor:pointer}.chip.active{background:var(--red);border-color:var(--red);color:white}.search{border:1px solid var(--line);background:white;border-radius:999px;padding:0 16px;width:min(360px,100%)}.search input{height:42px;width:100%;border:0;outline:0;background:transparent}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}.card{border:1px solid var(--line);border-radius:18px;overflow:hidden;background:white;cursor:pointer;transition:.25s}.card:hover{transform:translateY(-5px);box-shadow:var(--shadow)}.visual{aspect-ratio:16/10;background:linear-gradient(135deg,#64110f,#c25a38);position:relative;overflow:hidden}.visual img{width:100%;height:100%;object-fit:cover;transition:.3s}.card:hover img{transform:scale(1.035)}.play,.badge{position:absolute;left:16px;bottom:14px;z-index:2;background:#fffffff0;color:var(--red);font-weight:900}.play{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;padding-left:3px}.badge{border-radius:999px;padding:7px 10px;font-size:10px}.body{padding:16px}.title{font:18px/1.35 Georgia}.meta{margin-top:9px;color:#8b786d;font-size:10px;letter-spacing:.08em;text-transform:uppercase}.empty{grid-column:1/-1;padding:50px;text-align:center;border:1px dashed var(--line);border-radius:18px;color:var(--muted);background:#ffffff88}
-.heritage{margin-top:80px;border-radius:26px;overflow:hidden;background:#3b0b09;color:white;display:grid;grid-template-columns:1.15fr .85fr}.heritageCopy{padding:46px}.heritage h2{color:white}.heritage p{color:#e4c9bd;line-height:1.8}.art{min-height:320px;background:radial-gradient(circle,transparent 0 23%,#f1cf8888 24% 25%,transparent 26% 35%,#f1cf8844 36% 37%,transparent 38%),conic-gradient(#721410,#b13c25,#d0a04a,#721410)}.summary{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:25px}.sum{padding:15px;border:1px solid #ffffff20;border-radius:13px}.sum b{display:block;font:23px Georgia;color:#f3d79e}.sum span{font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#e0c1b6}
-footer{text-align:center;padding:44px;background:#231411;color:#d2c0b6;font-size:12px;line-height:1.8}footer b{font:18px Georgia;color:white}
-.modal{display:none;position:fixed;inset:0;z-index:100;background:#160705ee;align-items:center;justify-content:center;padding:20px}.modal.open{display:flex}.modalIn{width:min(1100px,96vw);position:relative}.modalTitle{color:white;font:20px Georgia;margin:0 50px 13px 0}.frame{aspect-ratio:16/9;background:black;border-radius:14px;overflow:hidden}.frame iframe,.frame img{width:100%;height:100%;border:0;object-fit:contain}.close{position:absolute;right:0;top:-8px;width:40px;height:40px;border-radius:50%;border:1px solid #ffffff50;background:#ffffff12;color:white;font-size:24px;cursor:pointer}
-@media(max-width:900px){.years{grid-template-columns:repeat(2,1fr)}.grid{grid-template-columns:repeat(2,1fr)}.heritage{grid-template-columns:1fr}.art{min-height:210px}.sub{display:none}}@media(max-width:620px){nav button:not(.outline){display:none}.hero{min-height:560px}.years{grid-template-columns:1fr 1fr}.year{min-height:135px;padding:16px}.year strong{font-size:31px}.grid{grid-template-columns:1fr}.head{display:block}.head p{margin-top:12px}.heritageCopy{padding:28px}.summary{grid-template-columns:1fr}}
-</style></head><body>
-<div class="top">স্মৃতি · সংস্কৃতি · ঐতিহ্য — A living digital archive of Botnia Durgotsav</div>
-<header><div class="brand"><div class="mark">ব</div><div><div class="name">Botnia Durgotsav</div><div class="sub">DIGITAL HERITAGE ARCHIVE</div></div></div><nav><button onclick="home()">Home</button><button onclick="toMedia()">Memories</button><button class="outline" onclick="toArchive()">Explore Archive</button></nav></header>
-<section class="hero"><div id="heroImg" class="heroImg"></div><div class="shade"></div><div class="heroIn"><div class="eyebrow">Botnia's Durga Puja, preserved across generations</div><h1>Where every Puja becomes <em>heritage.</em></h1><p>A visual chronicle of devotion, community and celebration — preserving our rituals, cultural programmes, people and memories year after year.</p><div class="actions"><button class="btn primary" onclick="toMedia()">Explore Memories</button><button class="btn ghost" onclick="setType('video');toMedia()">Watch Videos</button></div><div class="stats"><div class="stat"><b id="sYears">—</b><span>Years archived</span></div><div class="stat"><b id="sVideos">—</b><span>Videos</span></div><div class="stat"><b id="sPhotos">—</b><span>Photographs</span></div></div></div></section>
-<main>
-<section><div class="head"><div><div class="kicker">Our Journey</div><h2>Puja through the years</h2></div><p>Choose a year to revisit its rituals, celebrations and cultural memories. Counts update automatically from the archive.</p></div><div id="years" class="years"></div></section>
-<section id="memories"><div class="head"><div><div class="kicker">Digital Collection</div><h2>Stories, rituals & memories</h2></div><p>Photos and videos are discovered from your Google Drive archive — no individual HTML card creation.</p></div>
-<div class="toolbar"><div id="types" class="chips"><button class="chip active" data-v="all" onclick="setType('all')">All Memories</button><button class="chip" data-v="video" onclick="setType('video')">Videos</button><button class="chip" data-v="photo" onclick="setType('photo')">Photos</button></div><div class="search"><input id="q" placeholder="Search year, Puja day or title…" oninput="render()"></div></div>
-<div id="days" class="chips"><button class="chip active" data-v="all" onclick="setDay('all')">All Days</button><button class="chip" data-v="Mahalaya" onclick="setDay('Mahalaya')">Mahalaya</button><button class="chip" data-v="Sasthi" onclick="setDay('Sasthi')">Sasthi</button><button class="chip" data-v="Saptami" onclick="setDay('Saptami')">Saptami</button><button class="chip" data-v="Ashtami" onclick="setDay('Ashtami')">Ashtami</button><button class="chip" data-v="Navami" onclick="setDay('Navami')">Navami</button><button class="chip" data-v="Dashami" onclick="setDay('Dashami')">Dashami</button></div>
-<div id="grid" class="grid"><div class="empty">Loading the Botnia Digital Archive…</div></div></section>
-<section id="archive" class="heritage"><div class="heritageCopy"><div class="kicker" style="color:#f3d79e">Our Digital Heritage</div><h2>Built to grow with every Durgotsav.</h2><p>Add media to the correct year, media type and Puja-day folder in Google Drive. The site discovers the collection automatically.</p><div class="summary"><div class="sum"><b id="aYears">—</b><span>Archive years</span></div><div class="sum"><b id="aMedia">—</b><span>Total memories</span></div><div class="sum"><b>∞</b><span>Memories ahead</span></div></div></div><div class="art"></div></section>
-</main>
-<footer><b>Botnia Durgotsav</b><br>স্মৃতি · সংস্কৃতি · ঐতিহ্য<br><br>Independent Digital Heritage Archive of Botnia Durgotsav<br>© 2026 Botnia Durgotsav</footer>
-<div id="modal" class="modal" onclick="if(event.target===this)closeModal()"><div class="modalIn"><button class="close" onclick="closeModal()">×</button><div id="modalTitle" class="modalTitle"></div><div id="frame" class="frame"></div></div></div>
-<script>
-const ARCHIVE_YEARS = ['2026', '2025', '2024'];
-
-const S = {
-  media: [],
-  year: 'all',
-  type: 'all',
-  day: 'all'
-};
-
-const esc = s =>
-  String(s ?? '').replace(
-    /[&<>"']/g,
-    m => ({
-      '&': '&amp;',
-      '<': '&lt;',
-      '>': '&gt;',
-      '"': '&quot;',
-      "'": '&#39;'
-    }[m])
-  );
-
-const js = s =>
-  String(s ?? '')
-    .replace(/\\/g, '\\\\')
-    .replace(/'/g, "\\'")
-    .replace(/\r?\n/g, ' ');
-
-
-/* =========================================================
-   LOAD COMPLETE ARCHIVE
-   ---------------------------------------------------------
-   Cloudflare intentionally serves one year per API request.
-   This keeps each Worker invocation safely below the
-   Google Drive / Cloudflare subrequest limit.
-   ========================================================= */
-
-async function load() {
-
-  const grid = document.getElementById('grid');
-
-  grid.innerHTML =
-    '<div class="empty">Loading the Botnia Digital Archive…</div>';
-
-  try {
-
-    const results = await Promise.all(
-      ARCHIVE_YEARS.map(async year => {
-
-        const response = await fetch(
-          `/api/archive?year=${encodeURIComponent(year)}`
-        );
-
-        if (!response.ok) {
-          throw new Error(
-            `Archive request failed for ${year}: ${response.status}`
-          );
-        }
-
-        const data = await response.json();
-
-        return Array.isArray(data.media)
-          ? data.media
-          : [];
-      })
-    );
-
-    /*
-     * Combine:
-     * 2026 + 2025 + 2024
-     * into one collection for the website.
-     */
-    S.media = results.flat();
-
-    /*
-     * Remove accidental duplicates by Drive File ID.
-     */
-    S.media = [
-      ...new Map(
-        S.media.map(item => [item.id, item])
-      ).values()
-    ];
-
-    /*
-     * Newest archive material first.
-     */
-    S.media.sort((a, b) => {
-
-      const yearA = parseInt(a.year) || 0;
-      const yearB = parseInt(b.year) || 0;
-
-      if (yearA !== yearB) {
-        return yearB - yearA;
-      }
-
-      return (b.modifiedTime || '')
-        .localeCompare(a.modifiedTime || '');
-    });
-
-    years();
-    stats();
-    hero();
-    render();
-
-  } catch (error) {
-
-    console.error(
-      'Unable to load Botnia Digital Archive:',
-      error
-    );
-
-    grid.innerHTML = `
-      <div class="empty">
-        <b>The Digital Archive is temporarily unavailable.</b>
-        <br><br>
-        Please refresh the page in a few moments.
-      </div>
-    `;
-  }
+:root{
+  --red:#8b1e18;--deep:#48100d;--accent:#c34b2f;--gold:#c99a43;
+  --cream:#fffaf2;--paper:#f5eadb;--ink:#2e1c16;--muted:#77665c;
+  --line:#e5d5c3;--soft:#fffdf9;--shadow:0 20px 55px rgba(74,24,15,.12);
+  --day:#8b1e18;--day2:#c99a43;--daybg:#fff8ef;--dayink:#3d1712;
 }
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif}
+button,input{font:inherit}
+button{cursor:pointer}
+img{max-width:100%}
+.top{padding:9px 16px;text-align:center;background:#3c0e0c;color:#f0d38e;font-size:10px;letter-spacing:.16em;text-transform:uppercase}
+header{height:88px;display:flex;align-items:center;padding:0 5%;position:sticky;top:0;z-index:30;background:rgba(255,250,242,.96);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:13px}.brand img{width:58px;height:58px;object-fit:contain}.name{font:700 20px Georgia,serif;color:var(--deep)}.sub{font-size:9px;letter-spacing:.13em;color:var(--muted);margin-top:4px;text-transform:uppercase}
+nav{margin-left:auto;display:flex;gap:22px;align-items:center}nav button{border:0;background:none;color:#5d4b41;font-weight:700;font-size:12px}.outline{border:1px solid var(--red)!important;border-radius:999px!important;padding:10px 15px!important;color:var(--red)!important}
+.hero{min-height:650px;position:relative;display:grid;align-items:end;overflow:hidden;background:radial-gradient(circle at 80% 18%,rgba(210,164,74,.28),transparent 28%),linear-gradient(120deg,#330706,#74130f 52%,#b34a2e)}
+.heroImg{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:.7s}.heroImg.ready{opacity:.44}.shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(38,4,4,.96) 0%,rgba(38,4,4,.78) 46%,rgba(38,4,4,.20)),linear-gradient(0deg,rgba(38,4,4,.7),transparent 60%)}
+.alpana{position:absolute;width:340px;height:340px;border:1px solid rgba(255,240,210,.15);border-radius:50%;right:-80px;top:110px;box-shadow:0 0 0 28px rgba(255,240,210,.025),0 0 0 58px rgba(255,240,210,.018)}
+.alpana:before,.alpana:after{content:"";position:absolute;border:1px solid rgba(255,240,210,.14);border-radius:50%;inset:58px}.alpana:after{inset:112px}
+.heroIn{position:relative;z-index:2;width:min(1200px,90%);margin:auto;padding:100px 0 72px;color:white}
+.heroIdentity{display:flex;align-items:center;gap:14px;margin-bottom:24px}.heroIdentity img{width:76px;height:76px;object-fit:contain;background:#fffaf2;border-radius:50%;padding:7px}.heroIdentity b{display:block;font:18px Georgia,serif}.heroIdentity span{display:block;color:#edcfaa;font-size:10px;letter-spacing:.13em;text-transform:uppercase;margin-top:4px}
+.eyebrow{font-size:10px;letter-spacing:.19em;text-transform:uppercase;color:#f1d18a;font-weight:800}
+.hero h1{font:500 clamp(48px,6.6vw,86px)/.98 Georgia,serif;margin:16px 0 10px;max-width:900px;letter-spacing:-.035em}.hero h1 em{color:#f1d18a}
+.bengaliLine{font-size:18px;color:#f2d9c8;margin:0 0 14px}.hero p{font:clamp(16px,1.7vw,20px)/1.65 Georgia,serif;max-width:720px;color:#f7e9df}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}.btn{padding:13px 20px;border-radius:999px;border:1px solid rgba(255,255,255,.5);font-weight:800}.primary{background:white;color:var(--deep)}.ghost{background:rgba(255,255,255,.08);color:white}
+.stats{display:flex;gap:34px;margin-top:45px;flex-wrap:wrap}.stat b{display:block;font:28px Georgia,serif}.stat span{font-size:9px;letter-spacing:.13em;text-transform:uppercase;color:#e9cfc4}
+main{width:min(1200px,90%);margin:auto;padding:76px 0 95px}.section{margin-bottom:86px}.head{display:flex;justify-content:space-between;gap:30px;align-items:end;margin-bottom:28px}.kicker{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#b6482d;font-weight:800}.head h2,.heritage h2,.dayStory h2{font:500 clamp(31px,4vw,46px) Georgia,serif;color:var(--deep);margin:8px 0 0}.head p{max-width:520px;color:var(--muted);font-size:13px;line-height:1.75}
+.intro{display:grid;grid-template-columns:.85fr 1.15fr;gap:42px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:24px;padding:38px;position:relative;overflow:hidden}.intro:after{content:"অ";position:absolute;right:-20px;bottom:-55px;font:180px Georgia,serif;color:rgba(139,30,24,.035)}.introMark{font:italic 42px/1.15 Georgia,serif;color:var(--deep)}.intro p{color:var(--muted);line-height:1.85;margin:0}.intro strong{color:var(--red)}
+.journey{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}.ritual{border:1px solid var(--line);background:white;border-radius:18px;padding:19px 14px;min-height:180px;text-align:left;transition:.25s;position:relative;overflow:hidden}.ritual:hover{transform:translateY(-4px);box-shadow:var(--shadow)}.ritual .bn{font:24px Georgia,serif;color:var(--red);display:block}.ritual strong{font:17px Georgia,serif;display:block;margin:5px 0 12px}.ritual small{font-size:10px;line-height:1.55;color:var(--muted)}.ritual:after{content:"";position:absolute;height:5px;left:0;right:0;bottom:0;background:var(--swatch)}
+.dayStory{margin-top:18px;border-radius:24px;padding:38px 40px;background:var(--daybg);border:1px solid color-mix(in srgb,var(--day) 28%, white);position:relative;overflow:hidden;transition:.4s}.dayStory:before{content:"";position:absolute;left:0;top:0;bottom:0;width:7px;background:var(--day)}.dayStory .kicker{color:var(--day)}.dayStory h2{color:var(--dayink)}.dayStory p{max-width:760px;line-height:1.8;color:#65564d}.dayStory .themeDots{display:flex;gap:7px;margin-top:18px}.themeDots i{width:18px;height:18px;border-radius:50%;display:block;border:1px solid rgba(0,0,0,.08)}.themeDots i:nth-child(1){background:var(--day)}.themeDots i:nth-child(2){background:var(--day2)}.themeDots i:nth-child(3){background:var(--daybg)}
+.years{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.year{min-height:160px;padding:21px;border:1px solid var(--line);border-radius:18px;background:white;cursor:pointer;position:relative;overflow:hidden;transition:.25s}.year:hover,.year.active{transform:translateY(-4px);box-shadow:var(--shadow);border-color:var(--day)}.year strong{font:40px Georgia,serif;color:var(--red)}.year small{display:block;color:var(--muted);margin-top:13px}.arrow{position:absolute;right:18px;top:18px;width:34px;height:34px;border-radius:50%;background:var(--paper);display:grid;place-items:center;color:var(--red)}
+.archiveShell{border-radius:26px;padding:30px;background:var(--daybg);border:1px solid color-mix(in srgb,var(--day) 20%, white);transition:.4s}.toolbar{display:flex;justify-content:space-between;gap:15px;align-items:center;flex-wrap:wrap}.chips{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}.chip{border:1px solid var(--line);background:white;border-radius:999px;padding:9px 13px;font-size:11px;font-weight:800;color:#66554b}.chip.active{background:var(--day);border-color:var(--day);color:white}.search{border:1px solid var(--line);background:white;border-radius:999px;padding:0 16px;width:min(360px,100%)}.search input{height:42px;width:100%;border:0;outline:0;background:transparent}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:18px}.card{border:1px solid var(--line);border-radius:18px;overflow:hidden;background:white;cursor:pointer;transition:.25s}.card:hover{transform:translateY(-5px);box-shadow:var(--shadow)}.visual{aspect-ratio:16/10;background:linear-gradient(135deg,var(--day),var(--day2));position:relative;overflow:hidden}.visual img{width:100%;height:100%;object-fit:cover;transition:.3s}.card:hover img{transform:scale(1.035)}.play,.badge{position:absolute;left:16px;bottom:14px;z-index:2;background:rgba(255,255,255,.94);color:var(--day);font-weight:900}.play{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;padding-left:3px}.badge{border-radius:999px;padding:7px 10px;font-size:10px}.body{padding:16px}.title{font:18px/1.35 Georgia,serif}.meta{margin-top:9px;color:#8b786d;font-size:10px;letter-spacing:.08em;text-transform:uppercase}.empty{grid-column:1/-1;padding:50px;text-align:center;border:1px dashed var(--line);border-radius:18px;color:var(--muted);background:rgba(255,255,255,.75)}
+.heritage{border-radius:26px;overflow:hidden;background:#3b0b09;color:white;display:grid;grid-template-columns:1.15fr .85fr}.heritageCopy{padding:46px}.heritage h2{color:white}.heritage p{color:#e4c9bd;line-height:1.8}.art{min-height:330px;display:grid;place-items:center;background:radial-gradient(circle,transparent 0 23%,rgba(241,207,136,.45) 24% 25%,transparent 26% 35%,rgba(241,207,136,.22) 36% 37%,transparent 38%),conic-gradient(#721410,#b13c25,#d0a04a,#721410)}.art img{width:220px;height:220px;object-fit:contain;background:#fffaf2;border-radius:50%;padding:22px;box-shadow:0 20px 60px rgba(0,0,0,.22)}.summary{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:25px}.sum{padding:15px;border:1px solid rgba(255,255,255,.13);border-radius:13px}.sum b{display:block;font:23px Georgia,serif;color:#f3d79e}.sum span{font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#e0c1b6}
+footer{text-align:center;padding:52px 20px;background:#231411;color:#d2c0b6;font-size:12px;line-height:1.8}footer img{width:92px;height:92px;object-fit:contain;background:#fffaf2;border-radius:50%;padding:9px;margin-bottom:12px}footer b{font:20px Georgia,serif;color:white}
+.modal{display:none;position:fixed;inset:0;z-index:100;background:rgba(22,7,5,.94);align-items:center;justify-content:center;padding:20px}.modal.open{display:flex}.modalIn{width:min(1100px,96vw);position:relative}.modalTitle{color:white;font:20px Georgia,serif;margin:0 50px 13px 0}.frame{aspect-ratio:16/9;background:black;border-radius:14px;overflow:hidden}.frame iframe,.frame img{width:100%;height:100%;border:0;object-fit:contain}.close{position:absolute;right:0;top:-8px;width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.08);color:white;font-size:24px}
+@media(max-width:1000px){.journey{grid-template-columns:repeat(3,1fr)}.intro{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:900px){.years{grid-template-columns:repeat(2,1fr)}.heritage{grid-template-columns:1fr}.art{min-height:250px}.sub{display:none}}
+@media(max-width:650px){header{height:76px}.brand img{width:48px;height:48px}.name{font-size:17px}nav button:not(.outline){display:none}.hero{min-height:650px}.heroIn{padding:70px 0 55px}.heroIdentity{display:none}.hero h1{font-size:47px}.journey{grid-template-columns:repeat(2,1fr)}.ritual{min-height:160px}.years{grid-template-columns:1fr 1fr}.year{min-height:135px;padding:16px}.year strong{font-size:31px}.grid{grid-template-columns:1fr}.head{display:block}.head p{margin-top:12px}.dayStory{padding:28px}.archiveShell{padding:18px}.heritageCopy{padding:28px}.summary{grid-template-columns:1fr}.intro{padding:26px}.introMark{font-size:34px}}
+</style>
+</head>
+<body>
+<div class="top">স্মৃতি · সংস্কৃতি · ঐতিহ্য — A Living Digital Archive of Botnia Durgotsav</div>
 
-
-/* =========================================================
-   YEAR CARDS
-   ========================================================= */
-
-function years() {
-
-  /*
-   * Always show the three official archive years,
-   * even when a year currently contains zero media.
-   */
-
-  const html = ARCHIVE_YEARS.map(year => {
-
-    const items = S.media.filter(
-      item => item.year === year
-    );
-
-    const videos = items.filter(
-      item => item.type === 'video'
-    ).length;
-
-    const photos = items.filter(
-      item => item.type === 'photo'
-    ).length;
-
-    return `
-      <div
-        class="year"
-        data-v="${year}"
-        onclick="setYear('${year}')"
-      >
-        <div class="arrow">↗</div>
-
-        <strong>${year}</strong>
-
-        <small>
-          ${videos} ${videos === 1 ? 'video' : 'videos'}
-          ·
-          ${photos} ${photos === 1 ? 'photo' : 'photos'}
-        </small>
-      </div>
-    `;
-  }).join('');
-
-  const allCard = `
-    <div
-      class="year"
-      data-v="all"
-      onclick="setYear('all')"
-    >
-      <div class="arrow">↗</div>
-
-      <strong>All</strong>
-
-      <small>
-        ${S.media.length}
-        ${S.media.length === 1 ? 'archived memory' : 'archived memories'}
-      </small>
+<header>
+  <div class="brand">
+    <img src="kollol-puja-samiti-logo.png" alt="Kollol Puja Samiti logo">
+    <div>
+      <div class="name">Kollol Puja Samiti</div>
+      <div class="sub">Botnia Durgotsav · Digital Heritage Archive</div>
     </div>
-  `;
+  </div>
+  <nav>
+    <button onclick="home()">Home</button>
+    <button onclick="toJourney()">The Puja</button>
+    <button onclick="toMedia()">Memories</button>
+    <button class="outline" onclick="toArchive()">Explore Archive</button>
+  </nav>
+</header>
 
-  document.getElementById('years').innerHTML =
-    html + allCard;
+<section class="hero">
+  <div id="heroImg" class="heroImg"></div><div class="shade"></div><div class="alpana"></div>
+  <div class="heroIn">
+    <div class="heroIdentity"><img src="kollol-puja-samiti-logo.png" alt=""><div><b>Kollol Puja Samiti</b><span>Botnia · Noida</span></div></div>
+    <div class="eyebrow">Community · Devotion · Culture · Heritage</div>
+    <h1>Celebrating Durga Puja.<br>Preserving our <em>shared heritage.</em></h1>
+    <div class="bengaliLine">দুর্গাপূজার স্মৃতি, প্রজন্ম থেকে প্রজন্মে</div>
+    <p>Discover the rituals, people, traditions and celebrations of Botnia Durgotsav — a community archive created to preserve our Puja for generations to come.</p>
+    <div class="actions"><button class="btn primary" onclick="toJourney()">Discover the Puja</button><button class="btn ghost" onclick="toMedia()">Explore Memories</button></div>
+    <div class="stats"><div class="stat"><b id="sYears">—</b><span>Years archived</span></div><div class="stat"><b id="sVideos">—</b><span>Videos</span></div><div class="stat"><b id="sPhotos">—</b><span>Photographs</span></div></div>
+  </div>
+</section>
+
+<main>
+<section class="section">
+  <div class="intro">
+    <div><div class="kicker">Our Durgotsav</div><div class="introMark">More than a festival.<br>A community tradition.</div></div>
+    <p><strong>Botnia Durgotsav</strong>, presented by Kollol Puja Samiti, brings our community together through devotion, ritual, culture and celebration. This digital heritage archive preserves those moments while helping visitors from every culture understand the meaning behind Bengal's Durga Puja traditions.</p>
+  </div>
+</section>
+
+<section id="journey" class="section">
+  <div class="head"><div><div class="kicker">Understanding Durga Puja</div><h2>Journey through the Puja</h2></div><p>Six chapters trace the journey from the invocation of the Goddess to the emotion of Bijoya. Choose a day to learn its significance and enter its memories.</p></div>
+  <div class="journey">
+    <button class="ritual" style="--swatch:#d0a347" onclick="selectRitual('Mahalaya')"><span class="bn">মহালয়া</span><strong>Mahalaya</strong><small>Invocation · Dawn · The beginning of Devi Paksha</small></button>
+    <button class="ritual" style="--swatch:#e28a28" onclick="selectRitual('Sasthi')"><span class="bn">ষষ্ঠী</span><strong>Sasthi</strong><small>Bodhon · Arrival · Welcoming Maa Durga</small></button>
+    <button class="ritual" style="--swatch:#63834d" onclick="selectRitual('Saptami')"><span class="bn">সপ্তমী</span><strong>Saptami</strong><small>Nabapatrika · Nature · Ritual worship begins</small></button>
+    <button class="ritual" style="--swatch:#8e1c24" onclick="selectRitual('Ashtami')"><span class="bn">অষ্টমী</span><strong>Ashtami</strong><small>Anjali · Devotion · Sandhi Puja</small></button>
+    <button class="ritual" style="--swatch:#c64b27" onclick="selectRitual('Navami')"><span class="bn">নবমী</span><strong>Navami</strong><small>Worship · Celebration · Culmination</small></button>
+    <button class="ritual" style="--swatch:#b51e25" onclick="selectRitual('Dashami')"><span class="bn">দশমী</span><strong>Dashami</strong><small>Sindoor Khela · Farewell · Bijoya</small></button>
+  </div>
+  <div id="dayStory" class="dayStory">
+    <div class="kicker">The complete celebration</div><h2>One Puja. Six cultural chapters.</h2>
+    <p>Explore each day to see how the rituals, emotions and visual character of Durga Puja evolve. The archive palette changes with the selected chapter while Kollol's identity remains constant.</p>
+    <div class="themeDots"><i></i><i></i><i></i></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="head"><div><div class="kicker">Memories Through Time</div><h2>Puja through the years</h2></div><p>Revisit Botnia Durgotsav year by year. Counts are discovered automatically from the digital archive.</p></div>
+  <div id="years" class="years"></div>
+</section>
+
+<section id="memories" class="section">
+  <div class="head"><div><div class="kicker">Digital Collection</div><h2>Stories, rituals & memories</h2></div><p>Browse photographs and videos by year, ritual day or title. New media placed in the registered archive folders is discovered automatically.</p></div>
+  <div class="archiveShell">
+    <div class="toolbar">
+      <div id="types" class="chips"><button class="chip active" data-v="all" onclick="setType('all')">All Memories</button><button class="chip" data-v="video" onclick="setType('video')">Videos</button><button class="chip" data-v="photo" onclick="setType('photo')">Photos</button></div>
+      <div class="search"><input id="q" placeholder="Search year, Puja day or title…" oninput="render()"></div>
+    </div>
+    <div id="days" class="chips">
+      <button class="chip active" data-v="all" onclick="setDay('all')">All Days</button>
+      <button class="chip" data-v="Mahalaya" onclick="setDay('Mahalaya')">মহালয়া · Mahalaya</button>
+      <button class="chip" data-v="Sasthi" onclick="setDay('Sasthi')">ষষ্ঠী · Sasthi</button>
+      <button class="chip" data-v="Saptami" onclick="setDay('Saptami')">সপ্তমী · Saptami</button>
+      <button class="chip" data-v="Ashtami" onclick="setDay('Ashtami')">অষ্টমী · Ashtami</button>
+      <button class="chip" data-v="Navami" onclick="setDay('Navami')">নবমী · Navami</button>
+      <button class="chip" data-v="Dashami" onclick="setDay('Dashami')">দশমী · Dashami</button>
+    </div>
+    <div id="grid" class="grid"><div class="empty">Loading the Botnia Digital Archive…</div></div>
+  </div>
+</section>
+
+<section id="archive" class="heritage">
+  <div class="heritageCopy"><div class="kicker" style="color:#f3d79e">স্মৃতি · সংস্কৃতি · ঐতিহ্য</div><h2>Our memories become tomorrow's heritage.</h2><p>The Kollol Puja Samiti Digital Heritage Archive preserves Botnia Durgotsav beyond a single year — building a living cultural record for our community, our children and visitors discovering Durga Puja for the first time.</p><div class="summary"><div class="sum"><b id="aYears">—</b><span>Archive years</span></div><div class="sum"><b id="aMedia">—</b><span>Total memories</span></div><div class="sum"><b>∞</b><span>Memories ahead</span></div></div></div>
+  <div class="art"><img src="kollol-puja-samiti-logo.png" alt="Kollol Puja Samiti"></div>
+</section>
+</main>
+
+<footer><img src="kollol-puja-samiti-logo.png" alt="Kollol Puja Samiti logo"><br><b>Kollol Puja Samiti</b><br>বটনিয়া দুর্গোৎসব · Botnia Durgotsav<br>Digital Heritage Archive · ডিজিটাল স্মৃতি সংগ্রহ<br><br>© 2026 Kollol Puja Samiti</footer>
+
+<div id="modal" class="modal" onclick="if(event.target===this)closeModal()"><div class="modalIn"><button class="close" onclick="closeModal()">×</button><div id="modalTitle" class="modalTitle"></div><div id="frame" class="frame"></div></div></div>
+
+<script>
+const ARCHIVE_YEARS=['2026','2025','2024'];
+const S={media:[],year:'all',type:'all',day:'all'};
+const THEMES={
+ all:{day:'#8b1e18',day2:'#c99a43',bg:'#fff8ef',ink:'#3d1712',kicker:'The complete celebration',title:'One Puja. Six cultural chapters.',text:"Explore each day to see how the rituals, emotions and visual character of Durga Puja evolve. The archive palette changes with the selected chapter while Kollol's identity remains constant."},
+ Mahalaya:{day:'#24375c',day2:'#d0a347',bg:'#f7f3e8',ink:'#1f2d48',kicker:'মহালয়া · Mahalaya',title:'Invocation, dawn & awakening',text:'Mahalaya marks the beginning of Devi Paksha and the spiritual anticipation of Maa Durga’s arrival. Its mood is contemplative — moving from darkness toward the golden light of dawn.'},
+ Sasthi:{day:'#d46f1f',day2:'#e8b54f',bg:'#fff5df',ink:'#6a3214',kicker:'ষষ্ঠী · Sasthi',title:'Bodhon, arrival & welcome',text:'Sasthi begins the main festivities with Bodhon — the ceremonial awakening and welcoming of Maa Durga. The palette draws from marigold, saffron and warm festive light.'},
+ Saptami:{day:'#557447',day2:'#d5a33d',bg:'#f3f6e9',ink:'#30442a',kicker:'সপ্তমী · Saptami',title:'Nabapatrika, nature & renewal',text:'Saptami is closely associated with the Nabapatrika ritual and the formal beginning of worship. Sacred greens and turmeric-gold evoke nature, fertility and renewal.'},
+ Ashtami:{day:'#7f1720',day2:'#c6a04a',bg:'#fff1e8',ink:'#4d1118',kicker:'অষ্টমী · Ashtami',title:'Anjali, devotion & sacred intensity',text:'Ashtami is one of the most devotional moments of Durga Puja, associated with Pushpanjali and Sandhi Puja. Deep crimson and antique gold create a ceremonial, reverent mood.'},
+ Navami:{day:'#b93c20',day2:'#df8a32',bg:'#fff0e3',ink:'#5f2316',kicker:'নবমী · Navami',title:'Worship, celebration & culmination',text:'Navami carries the energy of the final full day of worship — devotional yet celebratory. Vermilion, burnt orange and gold reflect warmth, fire and festivity.'},
+ Dashami:{day:'#b51e25',day2:'#ffffff',bg:'#fffafa',ink:'#651217',kicker:'দশমী · Dashami',title:'Sindoor, farewell & Bijoya',text:'Dashami brings Devi Boron, Sindoor Khela and the emotional farewell to Maa Durga, followed by Bijoya greetings. Sindoor red against white expresses one of Bengal’s most recognisable Durga Puja traditions.'}
+};
+const esc=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+const js=s=>String(s??'').replace(/\\/g,'\\\\').replace(/'/g,"\\'").replace(/\r?\n/g,' ');
+
+async function load(){
+ const grid=document.getElementById('grid');
+ try{
+  const results=await Promise.all(ARCHIVE_YEARS.map(async year=>{const r=await fetch(`/api/archive?year=${encodeURIComponent(year)}`);if(!r.ok)throw Error(`${year}: ${r.status}`);const d=await r.json();return Array.isArray(d.media)?d.media:[]}));
+  S.media=[...new Map(results.flat().map(x=>[x.id,x])).values()];
+  S.media.sort((a,b)=>(parseInt(b.year)||0)-(parseInt(a.year)||0)||(b.modifiedTime||'').localeCompare(a.modifiedTime||''));
+  years();stats();hero();render();
+ }catch(e){console.error(e);grid.innerHTML='<div class="empty"><b>The Digital Archive is temporarily unavailable.</b><br><br>Please refresh the page in a few moments.</div>'}
 }
-
-
-/* =========================================================
-   ARCHIVE STATISTICS
-   ========================================================= */
-
-function stats() {
-
-  const videos = S.media.filter(
-    item => item.type === 'video'
-  ).length;
-
-  const photos = S.media.filter(
-    item => item.type === 'photo'
-  ).length;
-
-  /*
-   * Archive years reflects the configured archive,
-   * including years that currently contain no media.
-   */
-
-  const values = [
-    ['sYears', ARCHIVE_YEARS.length],
-    ['sVideos', videos],
-    ['sPhotos', photos],
-    ['aYears', ARCHIVE_YEARS.length],
-    ['aMedia', S.media.length]
-  ];
-
-  values.forEach(([id, value]) => {
-    const element = document.getElementById(id);
-
-    if (element) {
-      element.textContent = value;
-    }
-  });
+function years(){
+ const html=ARCHIVE_YEARS.map(y=>{const a=S.media.filter(x=>x.year===y),v=a.filter(x=>x.type==='video').length,p=a.filter(x=>x.type==='photo').length;return `<div class="year" data-v="${y}" onclick="setYear('${y}')"><div class="arrow">↗</div><strong>${y}</strong><small>${v} ${v===1?'video':'videos'} · ${p} ${p===1?'photo':'photos'}</small></div>`}).join('');
+ document.getElementById('years').innerHTML=html+`<div class="year" data-v="all" onclick="setYear('all')"><div class="arrow">↗</div><strong>All</strong><small>${S.media.length} ${S.media.length===1?'archived memory':'archived memories'}</small></div>`;
 }
-
-
-/* =========================================================
-   HERO IMAGE
-   ========================================================= */
-
-function hero() {
-
-  /*
-   * Prefer a photograph for the hero.
-   * If none exists yet, use any available media thumbnail.
-   */
-
-  const item =
-    S.media.find(
-      x => x.type === 'photo' && x.thumbnailLink
-    ) ||
-    S.media.find(
-      x => x.thumbnailLink
-    );
-
-  if (!item) return;
-
-  const heroImage =
-    document.getElementById('heroImg');
-
-  heroImage.style.backgroundImage =
-    `url("${item.thumbnailLink}")`;
-
-  heroImage.classList.add('ready');
+function stats(){const v=S.media.filter(x=>x.type==='video').length,p=S.media.filter(x=>x.type==='photo').length;[['sYears',ARCHIVE_YEARS.length],['sVideos',v],['sPhotos',p],['aYears',ARCHIVE_YEARS.length],['aMedia',S.media.length]].forEach(([i,n])=>{const e=document.getElementById(i);if(e)e.textContent=n})}
+function hero(){const x=S.media.find(x=>x.type==='photo'&&x.thumbnailLink)||S.media.find(x=>x.thumbnailLink);if(x){const e=document.getElementById('heroImg');e.style.backgroundImage=`url("${x.thumbnailLink}")`;e.classList.add('ready')}}
+function applyTheme(day){
+ const t=THEMES[day]||THEMES.all,root=document.documentElement;
+ root.style.setProperty('--day',t.day);root.style.setProperty('--day2',t.day2);root.style.setProperty('--daybg',t.bg);root.style.setProperty('--dayink',t.ink);
+ const box=document.getElementById('dayStory');box.querySelector('.kicker').textContent=t.kicker;box.querySelector('h2').textContent=t.title;box.querySelector('p').textContent=t.text;
 }
-
-
-/* =========================================================
-   MEDIA GRID
-   ========================================================= */
-
-function render() {
-
-  const searchBox =
-    document.getElementById('q');
-
-  const query =
-    (searchBox?.value || '')
-      .trim()
-      .toLowerCase();
-
-  const filtered = S.media
-    .filter(item => {
-
-      const yearMatch =
-        S.year === 'all' ||
-        item.year === S.year;
-
-      const typeMatch =
-        S.type === 'all' ||
-        item.type === S.type;
-
-      const dayMatch =
-        S.day === 'all' ||
-        item.day === S.day;
-
-      const searchText = `
-        ${item.name || ''}
-        ${item.year || ''}
-        ${item.day || ''}
-        ${item.type || ''}
-      `.toLowerCase();
-
-      const searchMatch =
-        !query ||
-        searchText.includes(query);
-
-      return (
-        yearMatch &&
-        typeMatch &&
-        dayMatch &&
-        searchMatch
-      );
-    })
-    .sort((a, b) => {
-
-      const yearA =
-        parseInt(a.year) || 0;
-
-      const yearB =
-        parseInt(b.year) || 0;
-
-      if (yearA !== yearB) {
-        return yearB - yearA;
-      }
-
-      return (b.modifiedTime || '')
-        .localeCompare(a.modifiedTime || '');
-    });
-
-  const grid =
-    document.getElementById('grid');
-
-  if (!filtered.length) {
-
-    grid.innerHTML = `
-      <div class="empty">
-        No memories match these filters yet.
-      </div>
-    `;
-
-    return;
-  }
-
-  grid.innerHTML =
-    filtered.map(item => {
-
-      const thumbnail =
-        item.thumbnailLink
-          ? `
-            <img
-              loading="lazy"
-              src="${esc(item.thumbnailLink)}"
-              alt="${esc(item.name)}"
-            >
-          `
-          : '';
-
-      const mediaIndicator =
-        item.type === 'video'
-          ? '<div class="play">▶</div>'
-          : '<div class="badge">PHOTO</div>';
-
-      return `
-        <article
-          class="card"
-          onclick="
-            openMedia(
-              '${js(item.id)}',
-              '${js(item.name)}',
-              '${js(item.type)}',
-              '${js(item.thumbnailLink || '')}'
-            )
-          "
-        >
-
-          <div class="visual">
-
-            ${thumbnail}
-
-            ${mediaIndicator}
-
-          </div>
-
-          <div class="body">
-
-            <div class="title">
-              ${esc(item.name)}
-            </div>
-
-            <div class="meta">
-              ${esc(item.year)}
-              ·
-              ${esc(item.day)}
-              ·
-              ${esc(item.type)}
-            </div>
-
-          </div>
-
-        </article>
-      `;
-    }).join('');
+function render(){
+ const q=(document.getElementById('q')?.value||'').trim().toLowerCase();
+ const a=S.media.filter(x=>(S.year==='all'||x.year===S.year)&&(S.type==='all'||x.type===S.type)&&(S.day==='all'||x.day===S.day)&&(!q||`${x.name} ${x.year} ${x.day} ${x.type}`.toLowerCase().includes(q))).sort((a,b)=>(parseInt(b.year)||0)-(parseInt(a.year)||0)||(b.modifiedTime||'').localeCompare(a.modifiedTime||''));
+ document.getElementById('grid').innerHTML=a.length?a.map(x=>`<article class="card" onclick="openMedia('${js(x.id)}','${js(x.name)}','${js(x.type)}','${js(x.thumbnailLink||'')}')"><div class="visual">${x.thumbnailLink?`<img loading="lazy" src="${esc(x.thumbnailLink)}" alt="${esc(x.name)}">`:''}${x.type==='video'?'<div class="play">▶</div>':'<div class="badge">PHOTO</div>'}</div><div class="body"><div class="title">${esc(x.name)}</div><div class="meta">${esc(x.year)} · ${esc(x.day)} · ${esc(x.type)}</div></div></article>`).join(''):'<div class="empty">No memories match these filters yet.</div>';
 }
-
-
-/* =========================================================
-   FILTERS
-   ========================================================= */
-
-function setYear(value) {
-
-  S.year = value;
-
-  document
-    .querySelectorAll('.year')
-    .forEach(element => {
-
-      element.classList.toggle(
-        'active',
-        element.dataset.v === value
-      );
-
-    });
-
-  render();
-  toMedia();
-}
-
-
-function setType(value) {
-
-  S.type = value;
-
-  document
-    .querySelectorAll('#types .chip')
-    .forEach(element => {
-
-      element.classList.toggle(
-        'active',
-        element.dataset.v === value
-      );
-
-    });
-
-  render();
-}
-
-
-function setDay(value) {
-
-  S.day = value;
-
-  document
-    .querySelectorAll('#days .chip')
-    .forEach(element => {
-
-      element.classList.toggle(
-        'active',
-        element.dataset.v === value
-      );
-
-    });
-
-  render();
-}
-
-
-/* =========================================================
-   MEDIA VIEWER
-   ========================================================= */
-
-function openMedia(
-  id,
-  title,
-  type,
-  thumbnail
-) {
-
-  document.getElementById(
-    'modalTitle'
-  ).textContent = title;
-
-  const frame =
-    document.getElementById('frame');
-
-  if (type === 'video') {
-
-    /*
-     * Video is streamed using Google's Drive preview player.
-     * No YouTube dependency.
-     */
-
-    frame.innerHTML = `
-      <iframe
-        src="https://drive.google.com/file/d/${encodeURIComponent(id)}/preview"
-        allow="autoplay; fullscreen"
-        allowfullscreen
-      ></iframe>
-    `;
-
-  } else {
-
-    /*
-     * Request a larger image for the photo viewer.
-     */
-
-    let largeImage = thumbnail;
-
-    if (largeImage) {
-
-      largeImage =
-        largeImage.replace(
-          /=s\d+$/,
-          '=s1600'
-        );
-
-    } else {
-
-      largeImage =
-        `https://drive.google.com/thumbnail?id=${encodeURIComponent(id)}&sz=w1600`;
-    }
-
-    frame.innerHTML = `
-      <img
-        src="${esc(largeImage)}"
-        alt="${esc(title)}"
-      >
-    `;
-  }
-
-  document
-    .getElementById('modal')
-    .classList.add('open');
-
-  document.body.style.overflow =
-    'hidden';
-}
-
-
-function closeModal() {
-
-  document
-    .getElementById('modal')
-    .classList.remove('open');
-
-  document.getElementById(
-    'frame'
-  ).innerHTML = '';
-
-  document.body.style.overflow = '';
-}
-
-
-/* =========================================================
-   NAVIGATION
-   ========================================================= */
-
-function toMedia() {
-
-  document
-    .getElementById('memories')
-    .scrollIntoView({
-      behavior: 'smooth'
-    });
-}
-
-
-function toArchive() {
-
-  document
-    .getElementById('archive')
-    .scrollIntoView({
-      behavior: 'smooth'
-    });
-}
-
-
-function home() {
-
-  window.scrollTo({
-    top: 0,
-    behavior: 'smooth'
-  });
-}
-
-
-/* =========================================================
-   KEYBOARD
-   ========================================================= */
-
-document.addEventListener(
-  'keydown',
-  event => {
-
-    if (event.key === 'Escape') {
-      closeModal();
-    }
-
-  }
-);
-
-
-/* =========================================================
-   START ARCHIVE
-   ========================================================= */
-
+function setYear(v){S.year=v;document.querySelectorAll('.year').forEach(x=>x.classList.toggle('active',x.dataset.v===v));render();toMedia()}
+function setType(v){S.type=v;document.querySelectorAll('#types .chip').forEach(x=>x.classList.toggle('active',x.dataset.v===v));render()}
+function setDay(v){S.day=v;document.querySelectorAll('#days .chip').forEach(x=>x.classList.toggle('active',x.dataset.v===v));applyTheme(v);render()}
+function selectRitual(v){setDay(v);document.querySelectorAll('#days .chip').forEach(x=>x.classList.toggle('active',x.dataset.v===v));document.getElementById('dayStory').scrollIntoView({behavior:'smooth',block:'center'});setTimeout(()=>toMedia(),650)}
+function openMedia(id,t,type,thumb){document.getElementById('modalTitle').textContent=t;const frame=document.getElementById('frame');if(type==='video'){frame.innerHTML=`<iframe src="https://drive.google.com/file/d/${encodeURIComponent(id)}/preview" allow="autoplay; fullscreen" allowfullscreen></iframe>`}else{const img=thumb?thumb.replace(/=s\d+$/,'=s1600'):`https://drive.google.com/thumbnail?id=${encodeURIComponent(id)}&sz=w1600`;frame.innerHTML=`<img src="${esc(img)}" alt="${esc(t)}">`}document.getElementById('modal').classList.add('open');document.body.style.overflow='hidden'}
+function closeModal(){document.getElementById('modal').classList.remove('open');document.getElementById('frame').innerHTML='';document.body.style.overflow=''}
+document.addEventListener('keydown',e=>e.key==='Escape'&&closeModal());
+function toJourney(){document.getElementById('journey').scrollIntoView({behavior:'smooth'})}
+function toMedia(){document.getElementById('memories').scrollIntoView({behavior:'smooth'})}
+function toArchive(){document.getElementById('archive').scrollIntoView({behavior:'smooth'})}
+function home(){scrollTo({top:0,behavior:'smooth'})}
 load();
-
-</script></body></html>
+</script>
+</body>
+</html>
