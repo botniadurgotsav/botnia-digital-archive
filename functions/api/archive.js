@@ -1,4 +1,12 @@
-const ROOT_FOLDER_ID = "1QISCTNl0nkEsHvsnqTbjvmUKIvdpi7xx";
+const ARCHIVE_ROOT = "1QISCTNl0nkEsHvsnqTbjvmUKIvdpi7xx";
+
+const YEAR_FOLDERS = [
+  { year: "2026", id: "1ehSBZSa0RlVpzXFBcV2KiaIFATXC9J1N" },
+  { year: "2025", id: "1dOBiACjDyO--2UdaQAvIr8yZqMHw0N25" },
+  { year: "2024", id: "18jsP8Xgyu6dNyavr-ALWfNOMu3YZ9ugn" },
+  { year: "Previous Years", id: "1lIcknGdjxpzsvIl2pZ5mG6DRwbbRDCah" }
+];
+
 const FOLDER = "application/vnd.google-apps.folder";
 
 const DAYS = [
@@ -21,15 +29,28 @@ export async function onRequestGet(context) {
   }
 
   try {
-    const media = await scanArchive(key);
+    const media = [];
+
+    for (const yearFolder of YEAR_FOLDERS) {
+      await scanYear(
+        yearFolder.id,
+        yearFolder.year,
+        key,
+        media
+      );
+    }
 
     media.sort((a, b) => {
       const yearA = parseInt(a.year) || 0;
       const yearB = parseInt(b.year) || 0;
 
-      if (yearA !== yearB) return yearB - yearA;
+      if (yearA !== yearB) {
+        return yearB - yearA;
+      }
 
-      return (b.createdTime || "").localeCompare(a.createdTime || "");
+      return (b.createdTime || "").localeCompare(
+        a.createdTime || ""
+      );
     });
 
     return json(
@@ -43,6 +64,7 @@ export async function onRequestGet(context) {
         "Cache-Control": "public,max-age=300,s-maxage=900"
       }
     );
+
   } catch (error) {
     console.error("Archive scan failed:", error);
 
@@ -56,170 +78,239 @@ export async function onRequestGet(context) {
   }
 }
 
-async function scanArchive(key) {
-  const media = [];
+
+/* -------------------------------------------------
+   Scan one year
+------------------------------------------------- */
+
+async function scanYear(yearId, year, key, media) {
+
+  const yearContents = await listFolder(yearId, key);
 
   /*
-   * parentPaths stores the path belonging to every folder ID.
+   * Expected structure:
    *
-   * Example:
-   * folder ID -> ["2024", "Videos", "Navami"]
+   * YEAR
+   *   ├── Videos
+   *   └── Photos
    */
-  const parentPaths = new Map();
 
-  parentPaths.set(ROOT_FOLDER_ID, []);
+  for (const category of yearContents) {
 
-  /*
-   * We scan Drive level-by-level rather than recursively.
-   *
-   * More importantly, multiple parent folders are queried together,
-   * dramatically reducing the number of Google API calls.
-   */
-  let frontier = [ROOT_FOLDER_ID];
+    if (category.mimeType !== FOLDER) {
+      continue;
+    }
 
-  /*
-   * Current archive depth is small:
-   *
-   * ROOT
-   *   -> YEAR
-   *      -> Videos / Photos
-   *         -> Puja Day
-   *            -> Media
-   *
-   * 6 levels leaves room for an additional organisational folder.
-   */
-  const MAX_DEPTH = 6;
+    const categoryName = category.name.toLowerCase();
 
-  for (let depth = 0; depth < MAX_DEPTH && frontier.length; depth++) {
-    const items = await listChildrenBatched(frontier, key);
+    if (
+      categoryName !== "videos" &&
+      categoryName !== "photos"
+    ) {
+      continue;
+    }
 
-    const nextFrontier = [];
+    const categoryContents =
+      await listFolder(category.id, key);
 
-    for (const item of items) {
-      const parentId =
-        item.parents?.find(id => parentPaths.has(id)) ||
-        item.parents?.[0];
+    /*
+     * Expected:
+     *
+     * Videos
+     *   ├── Mahalaya
+     *   ├── Sasthi
+     *   ├── Saptami
+     *   ├── Ashtami
+     *   ├── Navami
+     *   └── Dashami
+     */
 
-      const parentPath = parentPaths.get(parentId) || [];
+    for (const dayFolder of categoryContents) {
 
-      if (item.mimeType === FOLDER) {
-        const folderPath = [...parentPath, item.name];
-
-        parentPaths.set(item.id, folderPath);
-        nextFrontier.push(item.id);
-
+      if (dayFolder.mimeType !== FOLDER) {
         continue;
       }
 
-      const type = item.mimeType?.startsWith("video/")
-        ? "video"
-        : item.mimeType?.startsWith("image/")
-        ? "photo"
-        : null;
-
-      if (!type) continue;
-
-      const year =
-        parentPath.find(part => /^\d{4}$/.test(part)) ||
-        "Previous Years";
-
       const day =
-        parentPath.find(part => DAYS.includes(part)) ||
-        "Other";
+        DAYS.find(
+          d =>
+            d.toLowerCase() ===
+            dayFolder.name.toLowerCase()
+        ) || dayFolder.name;
 
-      media.push({
-        id: item.id,
-        name: cleanName(item.name),
-        mimeType: item.mimeType,
-        type,
-        year,
-        day,
-        thumbnailLink: item.thumbnailLink || "",
-        createdTime: item.createdTime || "",
-        modifiedTime: item.modifiedTime || "",
-        videoMediaMetadata: item.videoMediaMetadata || null,
-        path: parentPath
-      });
-    }
+      const files =
+        await listFolder(dayFolder.id, key);
 
-    frontier = nextFrontier;
-  }
+      for (const file of files) {
 
-  return media;
-}
-
-async function listChildrenBatched(parentIds, key) {
-  const all = [];
-
-  /*
-   * Instead of:
-   *
-   * 1 folder = 1 Google request
-   *
-   * we ask Google for children of several folders in the SAME request.
-   *
-   * 20 keeps the query URL comfortably small.
-   */
-  const BATCH_SIZE = 20;
-
-  for (let i = 0; i < parentIds.length; i += BATCH_SIZE) {
-    const batch = parentIds.slice(i, i + BATCH_SIZE);
-
-    const parentQuery = batch
-      .map(id => `'${id}' in parents`)
-      .join(" or ");
-
-    let pageToken = "";
-
-    do {
-      const params = new URLSearchParams({
-        q: `(${parentQuery}) and trashed=false`,
-        fields:
-          "nextPageToken,files(id,name,mimeType,parents,thumbnailLink,createdTime,modifiedTime,videoMediaMetadata)",
-        pageSize: "1000",
-        key
-      });
-
-      if (pageToken) {
-        params.set("pageToken", pageToken);
-      }
-
-      const response = await fetch(
-        `https://www.googleapis.com/drive/v3/files?${params}`
-      );
-
-      if (!response.ok) {
-        const errorText = await response.text();
-
-        throw new Error(
-          `Drive API ${response.status}: ${errorText}`
+        addMedia(
+          file,
+          year,
+          day,
+          category.name,
+          media
         );
       }
-
-      const data = await response.json();
-
-      all.push(...(data.files || []));
-
-      pageToken = data.nextPageToken || "";
-    } while (pageToken);
+    }
   }
+}
+
+
+/* -------------------------------------------------
+   Add media item
+------------------------------------------------- */
+
+function addMedia(
+  file,
+  year,
+  day,
+  category,
+  media
+) {
+
+  const type =
+    file.mimeType?.startsWith("video/")
+      ? "video"
+      : file.mimeType?.startsWith("image/")
+      ? "photo"
+      : null;
+
+  if (!type) {
+    return;
+  }
+
+  media.push({
+    id: file.id,
+    name: cleanName(file.name),
+    mimeType: file.mimeType,
+    type,
+    year,
+    day,
+
+    thumbnailLink:
+      file.thumbnailLink || "",
+
+    createdTime:
+      file.createdTime || "",
+
+    modifiedTime:
+      file.modifiedTime || "",
+
+    videoMediaMetadata:
+      file.videoMediaMetadata || null,
+
+    path: [
+      year,
+      category,
+      day
+    ]
+  });
+}
+
+
+/* -------------------------------------------------
+   Google Drive folder listing
+
+   IMPORTANT:
+   One parent folder per query.
+------------------------------------------------- */
+
+async function listFolder(folderId, key) {
+
+  let pageToken = "";
+  const all = [];
+
+  do {
+
+    const params = new URLSearchParams({
+      q:
+        `'${folderId}' in parents ` +
+        `and trashed=false`,
+
+      fields:
+        "nextPageToken," +
+        "files(" +
+        "id," +
+        "name," +
+        "mimeType," +
+        "thumbnailLink," +
+        "createdTime," +
+        "modifiedTime," +
+        "videoMediaMetadata" +
+        ")",
+
+      pageSize: "1000",
+      key
+    });
+
+    if (pageToken) {
+      params.set(
+        "pageToken",
+        pageToken
+      );
+    }
+
+    const response = await fetch(
+      "https://www.googleapis.com/drive/v3/files?" +
+      params.toString()
+    );
+
+    if (!response.ok) {
+
+      const errorText =
+        await response.text();
+
+      throw new Error(
+        `Drive API ${response.status} ` +
+        `for folder ${folderId}: ` +
+        errorText
+      );
+    }
+
+    const data =
+      await response.json();
+
+    all.push(
+      ...(data.files || [])
+    );
+
+    pageToken =
+      data.nextPageToken || "";
+
+  } while (pageToken);
 
   return all;
 }
 
+
+/* -------------------------------------------------
+   Helpers
+------------------------------------------------- */
+
 function cleanName(name) {
+
   return (name || "").replace(
     /\.(mp4|mov|m4v|webm|jpg|jpeg|png|webp|gif)$/i,
     ""
   );
 }
 
-function json(body, status = 200, headers = {}) {
-  return new Response(JSON.stringify(body), {
-    status,
-    headers: {
-      "Content-Type": "application/json; charset=utf-8",
-      ...headers
+
+function json(
+  body,
+  status = 200,
+  headers = {}
+) {
+
+  return new Response(
+    JSON.stringify(body),
+    {
+      status,
+      headers: {
+        "Content-Type":
+          "application/json; charset=utf-8",
+        ...headers
+      }
     }
-  });
+  );
 }
