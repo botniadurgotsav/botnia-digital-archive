@@ -20,14 +20,14 @@ button{cursor:pointer}
 img{max-width:100%}
 .top{padding:9px 16px;text-align:center;background:#3c0e0c;color:#f0d38e;font-size:10px;letter-spacing:.16em;text-transform:uppercase}
 header{height:88px;display:flex;align-items:center;padding:0 5%;position:sticky;top:0;z-index:30;background:rgba(255,250,242,.96);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
-.brand{display:flex;align-items:center;gap:13px}.brand img{width:58px;height:58px;object-fit:contain}.name{font:700 20px Georgia,serif;color:var(--deep)}.sub{font-size:9px;letter-spacing:.13em;color:var(--muted);margin-top:4px;text-transform:uppercase}
+.brand{display:flex;align-items:center;gap:13px}.brand img{width:58px;height:58px;object-fit:contain}.name{font:700 18px Georgia,serif;color:var(--deep)}.eventName{font:800 13px/1.15 Georgia,serif;color:var(--red);letter-spacing:.055em;margin-top:2px}.sub{font-size:8px;letter-spacing:.11em;color:var(--muted);margin-top:4px;text-transform:uppercase}
 nav{margin-left:auto;display:flex;gap:22px;align-items:center}nav button{border:0;background:none;color:#5d4b41;font-weight:700;font-size:12px}.outline{border:1px solid var(--red)!important;border-radius:999px!important;padding:10px 15px!important;color:var(--red)!important}
 .hero{min-height:650px;position:relative;display:grid;align-items:end;overflow:hidden;background:radial-gradient(circle at 80% 18%,rgba(210,164,74,.28),transparent 28%),linear-gradient(120deg,#330706,#74130f 52%,#b34a2e)}
 .heroImg{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:.7s}.heroImg.ready{opacity:.44}.shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(38,4,4,.96) 0%,rgba(38,4,4,.78) 46%,rgba(38,4,4,.20)),linear-gradient(0deg,rgba(38,4,4,.7),transparent 60%)}
 .alpana{position:absolute;width:340px;height:340px;border:1px solid rgba(255,240,210,.15);border-radius:50%;right:-80px;top:110px;box-shadow:0 0 0 28px rgba(255,240,210,.025),0 0 0 58px rgba(255,240,210,.018)}
 .alpana:before,.alpana:after{content:"";position:absolute;border:1px solid rgba(255,240,210,.14);border-radius:50%;inset:58px}.alpana:after{inset:112px}
 .heroIn{position:relative;z-index:2;width:min(1200px,90%);margin:auto;padding:100px 0 72px;color:white}
-.heroIdentity{display:flex;align-items:center;gap:14px;margin-bottom:24px}.heroIdentity img{width:76px;height:76px;object-fit:contain;background:#fffaf2;border-radius:50%;padding:7px}.heroIdentity b{display:block;font:18px Georgia,serif}.heroIdentity span{display:block;color:#edcfaa;font-size:10px;letter-spacing:.13em;text-transform:uppercase;margin-top:4px}
+.heroIdentity{display:flex;align-items:center;gap:14px;margin-bottom:24px}.heroIdentity img{width:76px;height:76px;object-fit:contain;background:#fffaf2;border-radius:50%;padding:7px}.heroIdentity b{display:block;font:18px Georgia,serif}.heroIdentity .heroEvent{display:block;color:#f1d18a;font:800 15px Georgia,serif;letter-spacing:.06em;margin-top:3px}.heroIdentity span{display:block;color:#edcfaa;font-size:9px;letter-spacing:.12em;text-transform:uppercase;margin-top:5px}.placeLine{display:inline-flex;align-items:center;gap:7px;margin:0 0 9px;padding:7px 11px;border:1px solid rgba(255,255,255,.22);border-radius:999px;background:rgba(255,255,255,.07);color:#f7e6d8;font-size:9px;font-weight:800;letter-spacing:.13em;text-transform:uppercase}
 .eyebrow{font-size:10px;letter-spacing:.19em;text-transform:uppercase;color:#f1d18a;font-weight:800}
 .hero h1{font:500 clamp(48px,6.6vw,86px)/.98 Georgia,serif;margin:16px 0 10px;max-width:900px;letter-spacing:-.035em}.hero h1 em{color:#f1d18a}
 .bengaliLine{font-size:18px;color:#f2d9c8;margin:0 0 14px}.hero p{font:clamp(16px,1.7vw,20px)/1.65 Georgia,serif;max-width:720px;color:#f7e9df}
@@ -40,7 +40,7 @@ main{width:min(1200px,90%);margin:auto;padding:76px 0 95px}.section{margin-botto
 .intro{display:grid;grid-template-columns:.85fr 1.15fr;gap:42px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:24px;padding:38px;position:relative;overflow:hidden}.intro:after{content:"অ";position:absolute;right:-20px;bottom:-55px;font:180px Georgia,serif;color:rgba(139,30,24,.035)}.introMark{font:italic 42px/1.15 Georgia,serif;color:var(--deep)}.intro p{color:var(--muted);line-height:1.85;margin:0}.intro strong{color:var(--red)}
 .journey{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}.ritual{border:1px solid var(--line);background:white;border-radius:18px;padding:19px 14px;min-height:180px;text-align:left;transition:.25s;position:relative;overflow:hidden}.ritual:hover{transform:translateY(-4px);box-shadow:var(--shadow)}.ritual .bn{font:24px Georgia,serif;color:var(--red);display:block}.ritual strong{font:17px Georgia,serif;display:block;margin:5px 0 12px}.ritual small{font-size:10px;line-height:1.55;color:var(--muted)}.ritual:after{content:"";position:absolute;height:5px;left:0;right:0;bottom:0;background:var(--swatch)}
 .dayStory{margin-top:18px;border-radius:22px;padding:28px 34px;background:var(--daybg);border:1px solid color-mix(in srgb,var(--day) 28%, white);position:relative;overflow:hidden;transition:.4s}.dayStory:before{content:"";position:absolute;left:0;top:0;bottom:0;width:7px;background:var(--day)}.dayStory .kicker{color:var(--day)}.dayStory h2{color:var(--dayink)}.dayStory p{max-width:860px;line-height:1.72;color:#65564d;margin-bottom:0}.dayStory h2{font-size:clamp(28px,3.2vw,39px)}.dayStory .themeDots{display:flex;gap:7px;margin-top:18px}.themeDots i{width:18px;height:18px;border-radius:50%;display:block;border:1px solid rgba(0,0,0,.08)}.themeDots i:nth-child(1){background:var(--day)}.themeDots i:nth-child(2){background:var(--day2)}.themeDots i:nth-child(3){background:var(--daybg)}
-.years{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.year{min-height:160px;padding:21px;border:1px solid var(--line);border-radius:18px;background:white;cursor:pointer;position:relative;overflow:hidden;transition:.25s}.year:hover,.year.active{transform:translateY(-4px);box-shadow:var(--shadow);border-color:var(--red)}.year strong{font:40px Georgia,serif;color:var(--red)}.year small{display:block;color:var(--muted);margin-top:13px}.arrow{position:absolute;right:18px;top:18px;width:34px;height:34px;border-radius:50%;background:var(--paper);display:grid;place-items:center;color:var(--red)}
+.years{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.year{min-height:160px;padding:21px;border:1px solid var(--line);border-radius:18px;background:white;cursor:pointer;position:relative;overflow:hidden;transition:.25s}.year:hover,.year.active{transform:translateY(-4px);box-shadow:var(--shadow);border-color:var(--red)}.year strong{font:40px Georgia,serif;color:var(--red)}.year[data-v="previous"] strong{font-size:27px;line-height:1.1;display:block;max-width:150px}.year small{display:block;color:var(--muted);margin-top:13px}.arrow{position:absolute;right:18px;top:18px;width:34px;height:34px;border-radius:50%;background:var(--paper);display:grid;place-items:center;color:var(--red)}
 .archiveShell{border-radius:26px;padding:30px;background:var(--daybg);border:1px solid color-mix(in srgb,var(--day) 20%, white);transition:.4s}.toolbar{display:flex;justify-content:space-between;gap:15px;align-items:center;flex-wrap:wrap}.chips{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}.chip{border:1px solid var(--line);background:white;border-radius:999px;padding:9px 13px;font-size:11px;font-weight:800;color:#66554b}.chip.active{background:var(--day);border-color:var(--day);color:white;box-shadow:0 7px 18px color-mix(in srgb,var(--day) 18%,transparent)}#days .chip.active{transform:translateY(-2px);outline:2px solid color-mix(in srgb,var(--day) 16%,transparent);outline-offset:2px}.search{border:1px solid var(--line);background:white;border-radius:999px;padding:0 16px;width:min(360px,100%)}.search input{height:42px;width:100%;border:0;outline:0;background:transparent}
 .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:18px}.card{border:1px solid var(--line);border-radius:18px;overflow:hidden;background:white;cursor:pointer;transition:.25s}.card:hover{transform:translateY(-5px);box-shadow:var(--shadow)}.visual{aspect-ratio:16/10;background:linear-gradient(135deg,var(--day),var(--day2));position:relative;overflow:hidden}.visual img{width:100%;height:100%;object-fit:cover;transition:.3s}.card:hover img{transform:scale(1.035)}.play,.badge{position:absolute;left:16px;bottom:14px;z-index:2;background:rgba(255,255,255,.94);color:var(--day);font-weight:900}.play{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;padding-left:3px}.badge{border-radius:999px;padding:7px 10px;font-size:10px}.body{padding:16px}.title{font:18px/1.35 Georgia,serif}.meta{margin-top:9px;color:#8b786d;font-size:10px;letter-spacing:.08em;text-transform:uppercase}.grid.single{grid-template-columns:minmax(0,1fr)}.grid.single .card{display:grid;grid-template-columns:minmax(320px,1.15fr) minmax(260px,.85fr);max-width:850px}.grid.single .visual{aspect-ratio:16/9}.grid.single .body{padding:30px;display:flex;flex-direction:column;justify-content:center}.grid.single .title{font-size:28px}.grid.single .meta{margin-top:14px}
 .empty{grid-column:1/-1;padding:44px 28px;text-align:center;border:1px dashed color-mix(in srgb,var(--day) 30%,var(--line));border-radius:18px;color:var(--muted);background:rgba(255,255,255,.82)}.empty .bnEmpty{font:24px Georgia,serif;color:var(--day);margin-bottom:6px}.empty b{font:22px Georgia,serif;color:var(--dayink)}.empty p{max-width:650px;margin:10px auto 18px;line-height:1.7}.empty button{border:0;border-radius:999px;padding:11px 16px;background:var(--day);color:white;font-weight:800}
@@ -60,7 +60,8 @@ footer{text-align:center;padding:52px 20px;background:#231411;color:#d2c0b6;font
     <img src="kollol-puja-samiti-logo.png" alt="Kollol Puja Samiti logo">
     <div>
       <div class="name">Kollol Puja Samiti</div>
-      <div class="sub">Botnia Durgotsav · Digital Heritage Archive</div>
+      <div class="eventName">BOTNIA DURGOTSAV · বটনিয়া দুর্গোৎসব</div>
+      <div class="sub">Gulshan Botnia · Sector 144, Noida</div>
     </div>
   </div>
   <nav>
@@ -74,11 +75,12 @@ footer{text-align:center;padding:52px 20px;background:#231411;color:#d2c0b6;font
 <section class="hero">
   <div id="heroImg" class="heroImg"></div><div class="shade"></div><div class="alpana"></div>
   <div class="heroIn">
-    <div class="heroIdentity"><img src="kollol-puja-samiti-logo.png" alt=""><div><b>Kollol Puja Samiti</b><span>Botnia · Noida</span></div></div>
-    <div class="eyebrow">Community · Devotion · Culture · Heritage</div>
+    <div class="heroIdentity"><img src="kollol-puja-samiti-logo.png" alt=""><div><b>Kollol Puja Samiti</b><div class="heroEvent">BOTNIA DURGOTSAV · বটনিয়া দুর্গোৎসব</div><span>Gulshan Botnia · Sector 144 · Noida</span></div></div>
+    <div class="placeLine">⌖ Gulshan Botnia · Sector 144 · Noida</div>
+    <div class="eyebrow">Botnia Durgotsav · Community · Devotion · Culture · Heritage</div>
     <h1>Celebrating Durga Puja.<br>Preserving our <em>shared heritage.</em></h1>
     <div class="bengaliLine">দুর্গাপূজার স্মৃতি, প্রজন্ম থেকে প্রজন্মে</div>
-    <p>Discover the rituals, people, traditions and celebrations of Botnia Durgotsav — a community archive created to preserve our Puja for generations to come.</p>
+    <p>Discover the rituals, people, traditions and celebrations of <strong>Botnia Durgotsav</strong> — the Durga Puja of the Gulshan Botnia community in Sector 144, Noida — preserved for generations to come.</p>
     <div class="actions"><button class="btn primary" onclick="toJourney()">Discover the Puja</button><button class="btn ghost" onclick="toMedia()">Explore Memories</button></div>
     <div class="stats"><div class="stat"><b id="sYears">—</b><span>Years archived</span></div><div class="stat"><b id="sVideos">—</b><span>Videos</span></div><div class="stat"><b id="sPhotos">—</b><span>Photographs</span></div></div>
   </div>
@@ -88,7 +90,7 @@ footer{text-align:center;padding:52px 20px;background:#231411;color:#d2c0b6;font
 <section class="section">
   <div class="intro">
     <div><div class="kicker">Our Durgotsav</div><div class="introMark">More than a festival.<br>A community tradition.</div></div>
-    <p><strong>Botnia Durgotsav</strong>, presented by Kollol Puja Samiti, brings our community together through devotion, ritual, culture and celebration. This digital heritage archive preserves those moments while helping visitors from every culture understand the meaning behind Bengal's Durga Puja traditions.</p>
+    <p><strong>Botnia Durgotsav</strong>, presented by Kollol Puja Samiti for the <strong>Gulshan Botnia community, Sector 144, Noida</strong>, brings our neighbourhood together through devotion, ritual, culture and celebration. From Gautam Buddha Nagar, Uttar Pradesh, this digital heritage archive preserves those moments while helping visitors from every culture understand the meaning behind Bengal's Durga Puja traditions.</p>
   </div>
 </section>
 
@@ -135,17 +137,17 @@ footer{text-align:center;padding:52px 20px;background:#231411;color:#d2c0b6;font
 </section>
 
 <section id="archive" class="heritage">
-  <div class="heritageCopy"><div class="kicker" style="color:#f3d79e">স্মৃতি · সংস্কৃতি · ঐতিহ্য</div><h2>Our memories become tomorrow's heritage.</h2><p>The Kollol Puja Samiti Digital Heritage Archive preserves Botnia Durgotsav beyond a single year — building a living cultural record for our community, our children and visitors discovering Durga Puja for the first time.</p><div class="summary"><div class="sum"><b id="aYears">—</b><span>Archive years</span></div><div class="sum"><b id="aMedia">—</b><span>Total memories</span></div><div class="sum"><b>∞</b><span>Memories ahead</span></div></div></div>
+  <div class="heritageCopy"><div class="kicker" style="color:#f3d79e">স্মৃতি · সংস্কৃতি · ঐতিহ্য</div><h2>Our memories become tomorrow's heritage.</h2><p>The Kollol Puja Samiti Digital Heritage Archive preserves Botnia Durgotsav beyond a single year — building a living cultural record of the Gulshan Botnia community in Sector 144, Noida, for our children and visitors discovering Durga Puja for the first time.</p><div class="summary"><div class="sum"><b id="aYears">—</b><span>Archive years</span></div><div class="sum"><b id="aMedia">—</b><span>Total memories</span></div><div class="sum"><b>∞</b><span>Memories ahead</span></div></div></div>
   <div class="art"><img src="kollol-puja-samiti-logo.png" alt="Kollol Puja Samiti"></div>
 </section>
 </main>
 
-<footer><img src="kollol-puja-samiti-logo.png" alt="Kollol Puja Samiti logo"><br><b>Kollol Puja Samiti</b><br>বটনিয়া দুর্গোৎসব · Botnia Durgotsav<br>Digital Heritage Archive · ডিজিটাল স্মৃতি সংগ্রহ<br><br>© 2026 Kollol Puja Samiti</footer>
+<footer><img src="kollol-puja-samiti-logo.png" alt="Kollol Puja Samiti logo"><br><b>Kollol Puja Samiti</b><br><strong style="color:#f3d79e;font-size:15px">BOTNIA DURGOTSAV · বটনিয়া দুর্গোৎসব</strong><br>Celebrated by the community of <strong style="color:white">Gulshan Botnia</strong><br>Sector 144, Noida · Gautam Buddha Nagar, Uttar Pradesh<br>Digital Heritage Archive · ডিজিটাল স্মৃতি সংগ্রহ<br><br>© 2026 Kollol Puja Samiti</footer>
 
 <div id="modal" class="modal" onclick="if(event.target===this)closeModal()"><div class="modalIn"><button class="close" onclick="closeModal()">×</button><div id="modalTitle" class="modalTitle"></div><div id="frame" class="frame"></div></div></div>
 
 <script>
-const ARCHIVE_YEARS=['2026','2025','2024'];
+const ARCHIVE_YEARS=['2026','2025','2024','previous'];
 const S={media:[],year:'all',type:'all',day:'all'};
 const THEMES={
  all:{day:'#8b1e18',day2:'#c99a43',bg:'#fff8ef',ink:'#3d1712',kicker:'The complete celebration',title:'One Puja. Six cultural chapters.',text:"Explore each day to see how the rituals, emotions and visual character of Durga Puja evolve. The archive palette changes with the selected chapter while Kollol's identity remains constant."},
@@ -177,7 +179,7 @@ async function load(){
  }catch(e){console.error(e);grid.innerHTML='<div class="empty"><b>The Digital Archive is temporarily unavailable.</b><br><br>Please refresh the page in a few moments.</div>'}
 }
 function years(){
- const html=ARCHIVE_YEARS.map(y=>{const a=S.media.filter(x=>x.year===y),v=a.filter(x=>x.type==='video').length,p=a.filter(x=>x.type==='photo').length;return `<div class="year" data-v="${y}" onclick="setYear('${y}')"><div class="arrow">↗</div><strong>${y}</strong><small>${v} ${v===1?'video':'videos'} · ${p} ${p===1?'photo':'photos'}</small></div>`}).join('');
+ const html=ARCHIVE_YEARS.map(y=>{const a=S.media.filter(x=>x.year===y),v=a.filter(x=>x.type==='video').length,p=a.filter(x=>x.type==='photo').length,label=y==='previous'?'Previous Years':y;return `<div class="year" data-v="${y}" onclick="setYear('${y}')"><div class="arrow">↗</div><strong>${label}</strong><small>${v} ${v===1?'video':'videos'} · ${p} ${p===1?'photo':'photos'}</small></div>`}).join('');
  document.getElementById('years').innerHTML=html+`<div class="year" data-v="all" onclick="setYear('all')"><div class="arrow">↗</div><strong>All</strong><small>${S.media.length} ${S.media.length===1?'archived memory':'archived memories'}</small></div>`;
 }
 function stats(){const v=S.media.filter(x=>x.type==='video').length,p=S.media.filter(x=>x.type==='photo').length;[['sYears',ARCHIVE_YEARS.length],['sVideos',v],['sPhotos',p],['aYears',ARCHIVE_YEARS.length],['aMedia',S.media.length]].forEach(([i,n])=>{const e=document.getElementById(i);if(e)e.textContent=n})}
@@ -191,7 +193,7 @@ function render(){
  const q=(document.getElementById('q')?.value||'').trim().toLowerCase();
  const a=S.media.filter(x=>(S.year==='all'||x.year===S.year)&&(S.type==='all'||x.type===S.type)&&(S.day==='all'||x.day===S.day)&&(!q||`${x.name} ${x.year} ${x.day} ${x.type}`.toLowerCase().includes(q))).sort((a,b)=>(parseInt(b.year)||0)-(parseInt(a.year)||0)||(b.modifiedTime||'').localeCompare(a.modifiedTime||''));
  const grid=document.getElementById('grid');grid.classList.toggle('single',a.length===1);
- if(a.length){grid.innerHTML=a.map(x=>`<article class="card" onclick="openMedia('${js(x.id)}','${js(x.name)}','${js(x.type)}','${js(x.thumbnailLink||'')}')"><div class="visual">${x.thumbnailLink?`<img loading="lazy" src="${esc(x.thumbnailLink)}" alt="${esc(x.name)}">`:''}${x.type==='video'?'<div class="play">▶</div>':'<div class="badge">PHOTO</div>'}</div><div class="body"><div class="title">${esc(x.name)}</div><div class="meta">${esc(x.year)} · ${esc(x.day)} · ${esc(x.type)}</div></div></article>`).join('')}
+ if(a.length){grid.innerHTML=a.map(x=>`<article class="card" onclick="openMedia('${js(x.id)}','${js(x.name)}','${js(x.type)}','${js(x.thumbnailLink||'')}')"><div class="visual">${x.thumbnailLink?`<img loading="lazy" src="${esc(x.thumbnailLink)}" alt="${esc(x.name)}">`:''}${x.type==='video'?'<div class="play">▶</div>':'<div class="badge">PHOTO</div>'}</div><div class="body"><div class="title">${esc(x.name)}</div><div class="meta">${esc(x.year==='previous'?'Previous Years':x.year)}${x.day&&x.day!=='Previous Years'?' · '+esc(x.day):''} · ${esc(x.type)}</div></div></article>`).join('')}
  else if(S.day!=='all'&&!q){const e=EMPTY[S.day]||['স্মৃতি শীঘ্রই এখানে যোগ হবে','Memories are yet to be added.','This chapter will grow as new photographs and videos are added.'];grid.innerHTML=`<div class="empty"><div class="bnEmpty">${e[0]}</div><b>${e[1]}</b><p>${e[2]}</p><button onclick="event.stopPropagation();setDay('all')">Explore all memories →</button></div>`}
  else{grid.innerHTML='<div class="empty"><b>No memories match these filters.</b><p>Try another year, Puja day, media type or search term.</p></div>'}
 }
