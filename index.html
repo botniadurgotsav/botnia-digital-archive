@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#6f1713">
+<meta name="description" content="The living digital heritage archive of Botnia Durgotsav by Kollol Puja Samiti, Gulshan Botnia, Sector 144, Noida.">
 <title>Kollol Puja Samiti | Botnia Durgotsav Digital Heritage</title>
 <style>
 :root{
@@ -46,9 +47,10 @@ main{width:min(1200px,90%);margin:auto;padding:76px 0 95px}.section{margin-botto
 .empty{grid-column:1/-1;padding:44px 28px;text-align:center;border:1px dashed color-mix(in srgb,var(--day) 30%,var(--line));border-radius:18px;color:var(--muted);background:rgba(255,255,255,.82)}.empty .bnEmpty{font:24px Georgia,serif;color:var(--day);margin-bottom:6px}.empty b{font:22px Georgia,serif;color:var(--dayink)}.empty p{max-width:650px;margin:10px auto 18px;line-height:1.7}.empty button{border:0;border-radius:999px;padding:11px 16px;background:var(--day);color:white;font-weight:800}
 .heritage{border-radius:26px;overflow:hidden;background:#3b0b09;color:white;display:grid;grid-template-columns:1.15fr .85fr}.heritageCopy{padding:46px}.heritage h2{color:white}.heritage p{color:#e4c9bd;line-height:1.8}.art{min-height:330px;display:grid;place-items:center;background:radial-gradient(circle,transparent 0 23%,rgba(241,207,136,.45) 24% 25%,transparent 26% 35%,rgba(241,207,136,.22) 36% 37%,transparent 38%),conic-gradient(#721410,#b13c25,#d0a04a,#721410)}.art img{width:220px;height:220px;object-fit:contain;background:#fffaf2;border-radius:50%;padding:22px;box-shadow:0 20px 60px rgba(0,0,0,.22)}.summary{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:25px}.sum{padding:15px;border:1px solid rgba(255,255,255,.13);border-radius:13px}.sum b{display:block;font:23px Georgia,serif;color:#f3d79e}.sum span{font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#e0c1b6}
 footer{text-align:center;padding:52px 20px;background:#231411;color:#d2c0b6;font-size:12px;line-height:1.8}footer img{width:92px;height:92px;object-fit:contain;background:#fffaf2;border-radius:50%;padding:9px;margin-bottom:12px}footer b{font:20px Georgia,serif;color:white}
-.modal{display:none;position:fixed;inset:0;z-index:100;background:rgba(22,7,5,.94);align-items:center;justify-content:center;padding:20px}.modal.open{display:flex}.modalIn{width:min(1100px,96vw);position:relative}.modalTitle{color:white;font:20px Georgia,serif;margin:0 50px 13px 0}.frame{aspect-ratio:16/9;background:black;border-radius:14px;overflow:hidden}.frame iframe,.frame img{width:100%;height:100%;border:0;object-fit:contain}.close{position:absolute;right:0;top:-8px;width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.08);color:white;font-size:24px}
+.modal{display:none;position:fixed;inset:0;z-index:100;background:rgba(22,7,5,.94);align-items:center;justify-content:center;padding:20px}.modal.open{display:flex}.modalIn{width:min(1100px,96vw);position:relative}.modalTitle{color:white;font:20px Georgia,serif;margin:0 50px 13px 0}.modalMeta{color:#d9bcae;font-size:11px;letter-spacing:.1em;text-transform:uppercase;margin:-7px 50px 14px 0}.modalNav{position:absolute;top:50%;transform:translateY(-50%);width:46px;height:46px;border-radius:50%;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.1);color:white;font-size:22px;z-index:3}.modalPrev{left:-62px}.modalNext{right:-62px}.resultCount{font-size:11px;color:var(--muted);font-weight:800}.card .body{position:relative}.cardYear{display:inline-block;margin-bottom:8px;padding:5px 8px;border-radius:999px;background:var(--daybg);color:var(--day);font-size:9px;font-weight:900;letter-spacing:.08em;text-transform:uppercase}.frame{aspect-ratio:16/9;background:black;border-radius:14px;overflow:hidden}.frame iframe,.frame img{width:100%;height:100%;border:0;object-fit:contain}.close{position:absolute;right:0;top:-8px;width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.08);color:white;font-size:24px}
 @media(max-width:1000px){.journey{grid-template-columns:repeat(3,1fr)}.intro{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:900px){.years{grid-template-columns:repeat(2,1fr)}.heritage{grid-template-columns:1fr}.art{min-height:250px}.sub{display:none}}
+@media(max-width:1200px){.modalPrev{left:8px}.modalNext{right:8px}}
 @media(max-width:650px){.grid.single .card{display:block}.grid.single .body{padding:18px}.grid.single .title{font-size:20px}header{height:76px}.brand img{width:48px;height:48px}.name{font-size:17px}nav button:not(.outline){display:none}.hero{min-height:650px}.heroIn{padding:70px 0 55px}.heroIdentity{display:none}.hero h1{font-size:47px}.journey{grid-template-columns:repeat(2,1fr)}.ritual{min-height:160px}.years{grid-template-columns:1fr 1fr}.year{min-height:135px;padding:16px}.year strong{font-size:31px}.grid{grid-template-columns:1fr}.head{display:block}.head p{margin-top:12px}.dayStory{padding:28px}.archiveShell{padding:18px}.heritageCopy{padding:28px}.summary{grid-template-columns:1fr}.intro{padding:26px}.introMark{font-size:34px}}
 </style>
 </head>
@@ -132,7 +134,7 @@ footer{text-align:center;padding:52px 20px;background:#231411;color:#d2c0b6;font
       <button class="chip" data-v="Navami" onclick="setDay('Navami')">নবমী · Navami</button>
       <button class="chip" data-v="Dashami" onclick="setDay('Dashami')">দশমী · Dashami</button>
     </div>
-    <div id="grid" class="grid"><div class="empty">Loading the Botnia Digital Archive…</div></div>
+    <div class="resultCount" id="resultCount">Preparing the archive…</div><div id="grid" class="grid"><div class="empty">Loading the Botnia Digital Archive…</div></div>
   </div>
 </section>
 
@@ -144,11 +146,11 @@ footer{text-align:center;padding:52px 20px;background:#231411;color:#d2c0b6;font
 
 <footer><img src="kollol-puja-samiti-logo.png" alt="Kollol Puja Samiti logo"><br><b>Kollol Puja Samiti</b><br><strong style="color:#f3d79e;font-size:15px">BOTNIA DURGOTSAV · বটনিয়া দুর্গোৎসব</strong><br>Celebrated by the community of <strong style="color:white">Gulshan Botnia</strong><br>Sector 144, Noida · Gautam Buddha Nagar, Uttar Pradesh<br>Digital Heritage Archive · ডিজিটাল স্মৃতি সংগ্রহ<br><br>© 2026 Kollol Puja Samiti</footer>
 
-<div id="modal" class="modal" onclick="if(event.target===this)closeModal()"><div class="modalIn"><button class="close" onclick="closeModal()">×</button><div id="modalTitle" class="modalTitle"></div><div id="frame" class="frame"></div></div></div>
+<div id="modal" class="modal" onclick="if(event.target===this)closeModal()"><div class="modalIn"><button class="close" onclick="closeModal()">×</button><button class="modalNav modalPrev" onclick="event.stopPropagation();stepMedia(-1)" aria-label="Previous memory">‹</button><button class="modalNav modalNext" onclick="event.stopPropagation();stepMedia(1)" aria-label="Next memory">›</button><div id="modalTitle" class="modalTitle"></div><div id="modalMeta" class="modalMeta"></div><div id="frame" class="frame"></div></div></div>
 
 <script>
 const ARCHIVE_YEARS=['2026','2025','2024','previous'];
-const S={media:[],year:'all',type:'all',day:'all'};
+const S={media:[],year:'all',type:'all',day:'all',visible:[],current:-1};
 const THEMES={
  all:{day:'#8b1e18',day2:'#c99a43',bg:'#fff8ef',ink:'#3d1712',kicker:'The complete celebration',title:'One Puja. Six cultural chapters.',text:"Explore each day to see how the rituals, emotions and visual character of Durga Puja evolve. The archive palette changes with the selected chapter while Kollol's identity remains constant."},
  Mahalaya:{day:'#24375c',day2:'#d0a347',bg:'#f7f3e8',ink:'#1f2d48',kicker:'মহালয়া · Mahalaya',title:'Invocation, dawn & awakening',text:'Mahalaya marks the beginning of Devi Paksha and the spiritual anticipation of Maa Durga’s arrival. Its mood is contemplative — moving from darkness toward the golden light of dawn.'},
@@ -192,8 +194,9 @@ function applyTheme(day){
 function render(){
  const q=(document.getElementById('q')?.value||'').trim().toLowerCase();
  const a=S.media.filter(x=>(S.year==='all'||x.year===S.year)&&(S.type==='all'||x.type===S.type)&&(S.day==='all'||x.day===S.day)&&(!q||`${x.name} ${x.year} ${x.day} ${x.type}`.toLowerCase().includes(q))).sort((a,b)=>(parseInt(b.year)||0)-(parseInt(a.year)||0)||(b.modifiedTime||'').localeCompare(a.modifiedTime||''));
- const grid=document.getElementById('grid');grid.classList.toggle('single',a.length===1);
- if(a.length){grid.innerHTML=a.map(x=>`<article class="card" onclick="openMedia('${js(x.id)}','${js(x.name)}','${js(x.type)}','${js(x.thumbnailLink||'')}')"><div class="visual">${x.thumbnailLink?`<img loading="lazy" src="${esc(x.thumbnailLink)}" alt="${esc(x.name)}">`:''}${x.type==='video'?'<div class="play">▶</div>':'<div class="badge">PHOTO</div>'}</div><div class="body"><div class="title">${esc(x.name)}</div><div class="meta">${esc(x.year==='previous'?'Previous Years':x.year)}${x.day&&x.day!=='Previous Years'?' · '+esc(x.day):''} · ${esc(x.type)}</div></div></article>`).join('')}
+ const grid=document.getElementById('grid');grid.classList.toggle('single',a.length===1);S.visible=a;
+ const rc=document.getElementById('resultCount');if(rc)rc.textContent=`${a.length} ${a.length===1?'memory':'memories'} in this view`;
+ if(a.length){grid.innerHTML=a.map((x,i)=>`<article class="card" onclick="openMediaAt(${i})"><div class="visual">${x.thumbnailLink?`<img loading="lazy" src="${esc(x.thumbnailLink)}" alt="${esc(x.name)}">`:''}${x.type==='video'?'<div class="play">▶</div>':'<div class="badge">PHOTO</div>'}</div><div class="body"><span class="cardYear">${esc(x.year==='previous'?'Heritage Collection':x.year+(x.day&&x.day!=='Previous Years'?' · '+x.day:''))}</span><div class="title">${esc(x.name)}</div><div class="meta">${esc(x.type)} · Botnia Durgotsav</div></div></article>`).join('')}
  else if(S.day!=='all'&&!q){const e=EMPTY[S.day]||['স্মৃতি শীঘ্রই এখানে যোগ হবে','Memories are yet to be added.','This chapter will grow as new photographs and videos are added.'];grid.innerHTML=`<div class="empty"><div class="bnEmpty">${e[0]}</div><b>${e[1]}</b><p>${e[2]}</p><button onclick="event.stopPropagation();setDay('all')">Explore all memories →</button></div>`}
  else{grid.innerHTML='<div class="empty"><b>No memories match these filters.</b><p>Try another year, Puja day, media type or search term.</p></div>'}
 }
@@ -201,9 +204,10 @@ function setYear(v){S.year=v;document.querySelectorAll('.year').forEach(x=>x.cla
 function setType(v){S.type=v;document.querySelectorAll('#types .chip').forEach(x=>x.classList.toggle('active',x.dataset.v===v));render()}
 function setDay(v){S.day=v;document.querySelectorAll('#days .chip').forEach(x=>x.classList.toggle('active',x.dataset.v===v));applyTheme(v);render()}
 function selectRitual(v){setDay(v);document.querySelectorAll('#days .chip').forEach(x=>x.classList.toggle('active',x.dataset.v===v));document.getElementById('dayStory').scrollIntoView({behavior:'smooth',block:'center'})}
-function openMedia(id,t,type,thumb){document.getElementById('modalTitle').textContent=t;const frame=document.getElementById('frame');if(type==='video'){frame.innerHTML=`<iframe src="https://drive.google.com/file/d/${encodeURIComponent(id)}/preview" allow="autoplay; fullscreen" allowfullscreen></iframe>`}else{const img=thumb?thumb.replace(/=s\d+$/,'=s1600'):`https://drive.google.com/thumbnail?id=${encodeURIComponent(id)}&sz=w1600`;frame.innerHTML=`<img src="${esc(img)}" alt="${esc(t)}">`}document.getElementById('modal').classList.add('open');document.body.style.overflow='hidden'}
+function openMediaAt(i){S.current=i;const x=S.visible[i];if(!x)return;document.getElementById('modalTitle').textContent=x.name;document.getElementById('modalMeta').textContent=`${x.year==='previous'?'Previous Years':x.year}${x.day&&x.day!=='Previous Years'?' · '+x.day:''} · ${x.type} · ${i+1} of ${S.visible.length}`;const frame=document.getElementById('frame');if(x.type==='video'){frame.innerHTML=`<iframe src="https://drive.google.com/file/d/${encodeURIComponent(x.id)}/preview" allow="autoplay; fullscreen" allowfullscreen></iframe>`}else{const img=x.thumbnailLink?x.thumbnailLink.replace(/=s\d+$/,'=s1600'):`https://drive.google.com/thumbnail?id=${encodeURIComponent(x.id)}&sz=w1600`;frame.innerHTML=`<img src="${esc(img)}" alt="${esc(x.name)}">`}document.getElementById('modal').classList.add('open');document.body.style.overflow='hidden'}
+function stepMedia(d){if(!S.visible.length)return;openMediaAt((S.current+d+S.visible.length)%S.visible.length)}
 function closeModal(){document.getElementById('modal').classList.remove('open');document.getElementById('frame').innerHTML='';document.body.style.overflow=''}
-document.addEventListener('keydown',e=>e.key==='Escape'&&closeModal());
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();if(document.getElementById('modal').classList.contains('open')&&e.key==='ArrowLeft')stepMedia(-1);if(document.getElementById('modal').classList.contains('open')&&e.key==='ArrowRight')stepMedia(1)});
 function toJourney(){document.getElementById('journey').scrollIntoView({behavior:'smooth'})}
 function toMedia(){document.getElementById('memories').scrollIntoView({behavior:'smooth'})}
 function toArchive(){document.getElementById('archive').scrollIntoView({behavior:'smooth'})}
