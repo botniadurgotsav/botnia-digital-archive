@@ -52,6 +52,26 @@ footer{text-align:center;padding:52px 20px;background:#231411;color:#d2c0b6;font
 @media(max-width:900px){.years{grid-template-columns:repeat(2,1fr)}.heritage{grid-template-columns:1fr}.art{min-height:250px}.sub{display:none}}
 @media(max-width:1200px){.modalPrev{left:8px}.modalNext{right:8px}}
 @media(max-width:650px){.grid.single .card{display:block}.grid.single .body{padding:18px}.grid.single .title{font-size:20px}header{height:76px}.brand img{width:48px;height:48px}.name{font-size:17px}nav button:not(.outline){display:none}.hero{min-height:650px}.heroIn{padding:70px 0 55px}.heroIdentity{display:none}.hero h1{font-size:47px}.journey{grid-template-columns:repeat(2,1fr)}.ritual{min-height:160px}.years{grid-template-columns:1fr 1fr}.year{min-height:135px;padding:16px}.year strong{font-size:31px}.grid{grid-template-columns:1fr}.head{display:block}.head p{margin-top:12px}.dayStory{padding:28px}.archiveShell{padding:18px}.heritageCopy{padding:28px}.summary{grid-template-columns:1fr}.intro{padding:26px}.introMark{font-size:34px}}
+
+/* ===== Launch Edition V2 ===== */
+.hero{min-height:720px;background:radial-gradient(circle at 82% 18%,rgba(226,177,75,.30),transparent 24%),radial-gradient(circle at 72% 80%,rgba(184,57,34,.28),transparent 34%),linear-gradient(118deg,#2b0706 0%,#5b100d 46%,#9a321f 100%)}
+.heroImg{filter:saturate(.9) contrast(1.06);transform:scale(1.01)}.heroImg.ready{opacity:.62}
+.heroIn{padding:88px 0 78px}.hero h1{max-width:980px;text-wrap:balance}.hero p{max-width:760px}
+.section{margin-bottom:72px}.intro{box-shadow:0 18px 55px rgba(72,30,17,.055)}
+.journey{gap:12px}.ritual{min-height:190px;padding:22px 16px}.ritual.active{border-color:var(--day);box-shadow:0 14px 35px color-mix(in srgb,var(--day) 13%,transparent);transform:translateY(-3px)}
+.ritual .step{display:block;font-size:9px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:#a88d7e;margin-bottom:18px}
+.years{grid-template-columns:repeat(5,1fr)}.year{min-height:145px}
+.archiveShell{padding:28px;box-shadow:0 22px 65px rgba(78,31,19,.055)}
+.archiveTopline{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:4px}.archiveHint{font-size:11px;color:var(--muted)}
+.grid{gap:18px}.card{box-shadow:0 8px 26px rgba(72,30,17,.045)}.title{font-size:20px;color:var(--deep)}
+.caption{margin-top:8px;color:var(--muted);font-size:12px;line-height:1.55}.grid.single .card{max-width:960px}.grid.single .title{font-size:30px}
+.heritage{margin-top:18px;box-shadow:0 28px 80px rgba(48,10,8,.16)}.heritageCopy{padding:54px}
+.art{position:relative}.art:after{content:"বটনিয়া দুর্গোৎসব";position:absolute;bottom:28px;color:#f7dfae;font:20px Georgia,serif;letter-spacing:.05em}
+.footerTag{color:#f3d79e;font:italic 18px Georgia,serif;margin:7px 0 16px}
+.modalTitle{font-size:24px}.modalCaption{color:#ead9cf;font:15px/1.55 Georgia,serif;margin:0 55px 14px 0;max-width:850px}
+@media(max-width:1000px){.years{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:650px){.hero{min-height:680px}.hero h1{font-size:44px}.years{grid-template-columns:1fr 1fr}.archiveTopline{display:block}.archiveHint{margin-top:8px}.modalTitle{font-size:19px}.modalCaption{font-size:13px}}
+
 </style>
 </head>
 <body>
@@ -99,12 +119,12 @@ footer{text-align:center;padding:52px 20px;background:#231411;color:#d2c0b6;font
 <section id="journey" class="section">
   <div class="head"><div><div class="kicker">Understanding Durga Puja</div><h2>Journey through the Puja</h2></div><p>Six chapters trace the journey from the invocation of the Goddess to the emotion of Bijoya. Choose a day to learn its significance and enter its memories.</p></div>
   <div class="journey">
-    <button class="ritual" style="--swatch:#d0a347" onclick="selectRitual('Mahalaya')"><span class="bn">মহালয়া</span><strong>Mahalaya</strong><small>Invocation · Dawn · The beginning of Devi Paksha</small></button>
-    <button class="ritual" style="--swatch:#e28a28" onclick="selectRitual('Sasthi')"><span class="bn">ষষ্ঠী</span><strong>Sasthi</strong><small>Bodhon · Arrival · Welcoming Maa Durga</small></button>
-    <button class="ritual" style="--swatch:#63834d" onclick="selectRitual('Saptami')"><span class="bn">সপ্তমী</span><strong>Saptami</strong><small>Nabapatrika · Nature · Ritual worship begins</small></button>
-    <button class="ritual" style="--swatch:#8e1c24" onclick="selectRitual('Ashtami')"><span class="bn">অষ্টমী</span><strong>Ashtami</strong><small>Anjali · Devotion · Sandhi Puja</small></button>
-    <button class="ritual" style="--swatch:#c64b27" onclick="selectRitual('Navami')"><span class="bn">নবমী</span><strong>Navami</strong><small>Worship · Celebration · Culmination</small></button>
-    <button class="ritual" style="--swatch:#b51e25" onclick="selectRitual('Dashami')"><span class="bn">দশমী</span><strong>Dashami</strong><small>Sindoor Khela · Farewell · Bijoya</small></button>
+    <button class="ritual" style="--swatch:#d0a347" onclick="selectRitual('Mahalaya')"><span class="step">Chapter 01</span><span class="bn">মহালয়া</span><strong>Mahalaya</strong><small>Invocation · Dawn · The beginning of Devi Paksha</small></button>
+    <button class="ritual" style="--swatch:#e28a28" onclick="selectRitual('Sasthi')"><span class="step">Chapter 02</span><span class="bn">ষষ্ঠী</span><strong>Sasthi</strong><small>Bodhon · Arrival · Welcoming Maa Durga</small></button>
+    <button class="ritual" style="--swatch:#63834d" onclick="selectRitual('Saptami')"><span class="step">Chapter 03</span><span class="bn">সপ্তমী</span><strong>Saptami</strong><small>Nabapatrika · Nature · Ritual worship begins</small></button>
+    <button class="ritual" style="--swatch:#8e1c24" onclick="selectRitual('Ashtami')"><span class="step">Chapter 04</span><span class="bn">অষ্টমী</span><strong>Ashtami</strong><small>Anjali · Devotion · Sandhi Puja</small></button>
+    <button class="ritual" style="--swatch:#c64b27" onclick="selectRitual('Navami')"><span class="step">Chapter 05</span><span class="bn">নবমী</span><strong>Navami</strong><small>Worship · Celebration · Culmination</small></button>
+    <button class="ritual" style="--swatch:#b51e25" onclick="selectRitual('Dashami')"><span class="step">Chapter 06</span><span class="bn">দশমী</span><strong>Dashami</strong><small>Sindoor Khela · Farewell · Bijoya</small></button>
   </div>
   <div id="dayStory" class="dayStory">
     <div class="kicker">The complete celebration</div><h2>One Puja. Six cultural chapters.</h2>
@@ -144,9 +164,9 @@ footer{text-align:center;padding:52px 20px;background:#231411;color:#d2c0b6;font
 </section>
 </main>
 
-<footer><img src="kollol-puja-samiti-logo.png" alt="Kollol Puja Samiti logo"><br><b>Kollol Puja Samiti</b><br><strong style="color:#f3d79e;font-size:15px">BOTNIA DURGOTSAV · বটনিয়া দুর্গোৎসব</strong><br>Celebrated by the community of <strong style="color:white">Gulshan Botnia</strong><br>Sector 144, Noida · Gautam Buddha Nagar, Uttar Pradesh<br>Digital Heritage Archive · ডিজিটাল স্মৃতি সংগ্রহ<br><br>© 2026 Kollol Puja Samiti</footer>
+<footer><img src="kollol-puja-samiti-logo.png" alt="Kollol Puja Samiti logo"><br><b>Kollol Puja Samiti</b><div class="footerTag">Where devotion becomes memory, and memory becomes heritage.</div><strong style="color:#f3d79e;font-size:15px">BOTNIA DURGOTSAV · বটনিয়া দুর্গোৎসব</strong><br>Celebrated by the community of <strong style="color:white">Gulshan Botnia</strong><br>Sector 144, Noida · Gautam Buddha Nagar, Uttar Pradesh<br>Digital Heritage Archive · ডিজিটাল স্মৃতি সংগ্রহ<br><br>© 2026 Kollol Puja Samiti</footer>
 
-<div id="modal" class="modal" onclick="if(event.target===this)closeModal()"><div class="modalIn"><button class="close" onclick="closeModal()">×</button><button class="modalNav modalPrev" onclick="event.stopPropagation();stepMedia(-1)" aria-label="Previous memory">‹</button><button class="modalNav modalNext" onclick="event.stopPropagation();stepMedia(1)" aria-label="Next memory">›</button><div id="modalTitle" class="modalTitle"></div><div id="modalMeta" class="modalMeta"></div><div id="frame" class="frame"></div></div></div>
+<div id="modal" class="modal" onclick="if(event.target===this)closeModal()"><div class="modalIn"><button class="close" onclick="closeModal()">×</button><button class="modalNav modalPrev" onclick="event.stopPropagation();stepMedia(-1)" aria-label="Previous memory">‹</button><button class="modalNav modalNext" onclick="event.stopPropagation();stepMedia(1)" aria-label="Next memory">›</button><div id="modalTitle" class="modalTitle"></div><div id="modalMeta" class="modalMeta"></div><div id="modalCaption" class="modalCaption"></div><div id="frame" class="frame"></div></div></div>
 
 <script>
 const ARCHIVE_YEARS=['2026','2025','2024','previous'];
@@ -170,6 +190,19 @@ Dashami:['দশমীর স্মৃতি শীঘ্রই এখানে 
 };
 const esc=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
 const js=s=>String(s??'').replace(/\\/g,'\\\\').replace(/'/g,"\\'").replace(/\r?\n/g,' ');
+function isMachineFilename(name){return /^[0-9a-f]{8}-[0-9a-f-]{20,}\.(jpe?g|png|webp|heic)$/i.test(String(name||'').trim())}
+function cleanWords(name){return String(name||'').replace(/\.[^.]+$/,'').replace(/[_-]+/g,' ').replace(/\s+/g,' ').trim()}
+function displayTitle(x){
+ const cleaned=cleanWords(x.name);
+ if(!isMachineFilename(x.name)&&cleaned&&!/^(img|dsc|pxl|vid)\s*\d*$/i.test(cleaned))return cleaned;
+ const y=x.year==='previous'?'Heritage':x.year;
+ const d=x.day&&x.day!=='Previous Years'?x.day:'Botnia Durgotsav';
+ return `${d} · ${y} — ${x.type==='video'?'Video':'Photo'} Memory`;
+}
+function displayCaption(x){
+ const d=x.day&&x.day!=='Previous Years'?x.day:'an earlier celebration';
+ return `A preserved ${x.type==='video'?'video':'photograph'} from ${d} in the Botnia Durgotsav digital heritage archive.`;
+}
 
 async function load(){
  const grid=document.getElementById('grid');
@@ -185,7 +218,7 @@ function years(){
  document.getElementById('years').innerHTML=html+`<div class="year" data-v="all" onclick="setYear('all')"><div class="arrow">↗</div><strong>All</strong><small>${S.media.length} ${S.media.length===1?'archived memory':'archived memories'}</small></div>`;
 }
 function stats(){const v=S.media.filter(x=>x.type==='video').length,p=S.media.filter(x=>x.type==='photo').length;[['sYears',ARCHIVE_YEARS.length],['sVideos',v],['sPhotos',p],['aYears',ARCHIVE_YEARS.length],['aMedia',S.media.length]].forEach(([i,n])=>{const e=document.getElementById(i);if(e)e.textContent=n})}
-function hero(){const x=S.media.find(x=>x.type==='photo'&&x.thumbnailLink)||S.media.find(x=>x.thumbnailLink);if(x){const e=document.getElementById('heroImg');e.style.backgroundImage=`url("${x.thumbnailLink}")`;e.classList.add('ready')}}
+function hero(){const x=S.media.find(x=>x.type==='photo'&&x.thumbnailLink)||S.media.find(x=>x.type==='photo')||S.media.find(x=>x.thumbnailLink);if(x){const e=document.getElementById('heroImg');const u=x.thumbnailLink||`https://drive.google.com/thumbnail?id=${encodeURIComponent(x.id)}&sz=w2000`;e.style.backgroundImage=`url("${u}")`;e.classList.add('ready')}}
 function applyTheme(day){
  const t=THEMES[day]||THEMES.all,root=document.documentElement;
  root.style.setProperty('--day',t.day);root.style.setProperty('--day2',t.day2);root.style.setProperty('--daybg',t.bg);root.style.setProperty('--dayink',t.ink);
@@ -196,14 +229,14 @@ function render(){
  const a=S.media.filter(x=>(S.year==='all'||x.year===S.year)&&(S.type==='all'||x.type===S.type)&&(S.day==='all'||x.day===S.day)&&(!q||`${x.name} ${x.year} ${x.day} ${x.type}`.toLowerCase().includes(q))).sort((a,b)=>(parseInt(b.year)||0)-(parseInt(a.year)||0)||(b.modifiedTime||'').localeCompare(a.modifiedTime||''));
  const grid=document.getElementById('grid');grid.classList.toggle('single',a.length===1);S.visible=a;
  const rc=document.getElementById('resultCount');if(rc)rc.textContent=`${a.length} ${a.length===1?'memory':'memories'} in this view`;
- if(a.length){grid.innerHTML=a.map((x,i)=>`<article class="card" onclick="openMediaAt(${i})"><div class="visual">${x.thumbnailLink?`<img loading="lazy" src="${esc(x.thumbnailLink)}" alt="${esc(x.name)}">`:''}${x.type==='video'?'<div class="play">▶</div>':'<div class="badge">PHOTO</div>'}</div><div class="body"><span class="cardYear">${esc(x.year==='previous'?'Heritage Collection':x.year+(x.day&&x.day!=='Previous Years'?' · '+x.day:''))}</span><div class="title">${esc(x.name)}</div><div class="meta">${esc(x.type)} · Botnia Durgotsav</div></div></article>`).join('')}
+ if(a.length){grid.innerHTML=a.map((x,i)=>`<article class="card" onclick="openMediaAt(${i})"><div class="visual">${x.thumbnailLink?`<img loading="lazy" src="${esc(x.thumbnailLink)}" alt="${esc(x.name)}">`:''}${x.type==='video'?'<div class="play">▶</div>':'<div class="badge">PHOTO</div>'}</div><div class="body"><span class="cardYear">${esc(x.year==='previous'?'Heritage Collection':x.year+(x.day&&x.day!=='Previous Years'?' · '+x.day:''))}</span><div class="title">${esc(displayTitle(x))}</div><div class="caption">${esc(displayCaption(x))}</div><div class="meta">${esc(x.type)} · Botnia Durgotsav</div></div></article>`).join('')}
  else if(S.day!=='all'&&!q){const e=EMPTY[S.day]||['স্মৃতি শীঘ্রই এখানে যোগ হবে','Memories are yet to be added.','This chapter will grow as new photographs and videos are added.'];grid.innerHTML=`<div class="empty"><div class="bnEmpty">${e[0]}</div><b>${e[1]}</b><p>${e[2]}</p><button onclick="event.stopPropagation();setDay('all')">Explore all memories →</button></div>`}
  else{grid.innerHTML='<div class="empty"><b>No memories match these filters.</b><p>Try another year, Puja day, media type or search term.</p></div>'}
 }
 function setYear(v){S.year=v;document.querySelectorAll('.year').forEach(x=>x.classList.toggle('active',x.dataset.v===v));render();toMedia()}
 function setType(v){S.type=v;document.querySelectorAll('#types .chip').forEach(x=>x.classList.toggle('active',x.dataset.v===v));render()}
 function setDay(v){S.day=v;document.querySelectorAll('#days .chip').forEach(x=>x.classList.toggle('active',x.dataset.v===v));applyTheme(v);render()}
-function selectRitual(v){setDay(v);document.querySelectorAll('#days .chip').forEach(x=>x.classList.toggle('active',x.dataset.v===v));document.getElementById('dayStory').scrollIntoView({behavior:'smooth',block:'center'})}
+function selectRitual(v){setDay(v);document.querySelectorAll('.ritual').forEach(x=>x.classList.toggle('active',x.getAttribute('onclick')?.includes(`'${v}'`)));document.getElementById('dayStory').scrollIntoView({behavior:'smooth',block:'center'})}
 function openMediaAt(i){S.current=i;const x=S.visible[i];if(!x)return;document.getElementById('modalTitle').textContent=x.name;document.getElementById('modalMeta').textContent=`${x.year==='previous'?'Previous Years':x.year}${x.day&&x.day!=='Previous Years'?' · '+x.day:''} · ${x.type} · ${i+1} of ${S.visible.length}`;const frame=document.getElementById('frame');if(x.type==='video'){frame.innerHTML=`<iframe src="https://drive.google.com/file/d/${encodeURIComponent(x.id)}/preview" allow="autoplay; fullscreen" allowfullscreen></iframe>`}else{const img=x.thumbnailLink?x.thumbnailLink.replace(/=s\d+$/,'=s1600'):`https://drive.google.com/thumbnail?id=${encodeURIComponent(x.id)}&sz=w1600`;frame.innerHTML=`<img src="${esc(img)}" alt="${esc(x.name)}">`}document.getElementById('modal').classList.add('open');document.body.style.overflow='hidden'}
 function stepMedia(d){if(!S.visible.length)return;openMediaAt((S.current+d+S.visible.length)%S.visible.length)}
 function closeModal(){document.getElementById('modal').classList.remove('open');document.getElementById('frame').innerHTML='';document.body.style.overflow=''}
