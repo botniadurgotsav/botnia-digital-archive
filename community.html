@@ -6,8 +6,38 @@
 .peopleSec{padding:72px 0}.head{display:grid;grid-template-columns:.85fr 1.15fr;gap:60px;align-items:end;margin-bottom:34px}.head h2{margin:8px 0 0;font:700 clamp(38px,4vw,58px)/1 Georgia,serif}.head p{margin:0;color:#75645a;line-height:1.75;font-size:15px}.people{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}.person{min-height:174px;background:#fff;border:1px solid #ead8c8;border-radius:20px;padding:22px 14px;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(72,30,17,.035)}.monogram{width:64px;height:64px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(145deg,#6b1012,#9b2921);color:#f3d18c;border:4px solid #fff4e6;box-shadow:0 0 0 1px #e7cdb7;font:700 20px Georgia,serif}.person h3{margin:16px 0 0;font:700 17px/1.25 Georgia,serif}
 .closing{margin:0 auto 70px;width:min(1180px,90vw);border-radius:26px;padding:46px 30px;text-align:center;background:linear-gradient(120deg,#3a0808,#761315 65%,#94221d);color:#fff}.closing .en{font:italic clamp(30px,4vw,50px) Georgia,serif}.closing .bn{margin-top:13px;color:#efc879;font:22px Georgia,serif}footer{background:#3a0808;color:#eadbd0;text-align:center;padding:32px 20px}footer img{width:58px;height:58px;background:#fff;border-radius:50%;padding:5px}footer strong{display:block;margin-top:9px;color:#fff;font:18px Georgia,serif}footer .tag{margin:6px;color:#efc879;font:italic 16px Georgia,serif}footer small{line-height:1.7}
 @media(max-width:1050px){.people{grid-template-columns:repeat(4,1fr)}nav{gap:14px}}@media(max-width:760px){.brand small{display:none}nav{font-size:10px;gap:9px}nav a:nth-child(2){display:none}.archive{padding:9px}.head{grid-template-columns:1fr;gap:18px}.people{grid-template-columns:repeat(3,1fr)}}@media(max-width:520px){.brand b{display:none}.brand strong{font-size:17px}nav a:not(.active):not(.archive){display:none}.people{grid-template-columns:repeat(2,1fr);gap:10px}.person{min-height:154px}}
-</style></head><body><div class="top">স্মৃতি · সংস্কৃতি · ঐতিহ্য — A Living Digital Archive of Botnia Durgotsav</div>
-<header><div class="wrap nav"><a class="brand" href="index.html"><img src="kollol-puja-samiti-logo.png"><div><strong>Kollol Puja Samiti</strong><b>BOTNIA DURGOTSAV · বটনিয়া দুর্গোৎসব</b><small>GULSHAN BOTNIA · SECTOR 144 · NOIDA</small></div></a><nav><a href="index.html">Home</a><a href="index.html#puja">The Puja</a><a class="active" href="community.html">Our Community</a><a href="index.html#memories">Memories</a><a class="archive" href="index.html#archive">Explore Archive</a></nav></div></header>
+
+/* Shared site chrome — deliberately matches index.html */
+header{height:88px;display:flex;align-items:center;padding:0 5%;position:sticky;top:0;z-index:30;background:rgba(255,250,242,.96);backdrop-filter:blur(14px);border-bottom:1px solid #ead8c8}
+header .brand{display:flex;align-items:center;gap:13px;text-decoration:none}
+header .brand img{width:58px;height:58px;object-fit:contain;background:transparent}
+header .name{font:700 18px Georgia,serif;color:#4a0b0b}
+header .eventName{font:800 13px/1.15 Georgia,serif;color:#8d1919;letter-spacing:.055em;margin-top:2px}
+header .sub{font-size:8px;letter-spacing:.11em;color:#75645a;margin-top:4px;text-transform:uppercase}
+header nav{margin-left:auto;display:flex;gap:22px;align-items:center}
+header nav button{border:0;background:none;color:#5d4b41;font-weight:700;font-size:12px;font-family:Arial,Helvetica,sans-serif;cursor:pointer;padding:0}
+header nav .outline{border:1px solid #8d1919!important;border-radius:999px!important;padding:10px 15px!important;color:#8d1919!important}
+header nav .communityActive{color:#8d1919}
+@media(max-width:900px){header .sub{display:none}}
+@media(max-width:650px){header{height:76px}header .brand img{width:48px;height:48px}header .name{font-size:17px}header nav button:not(.outline){display:none}}
+
+</style></head><body><header>
+  <div class="brand">
+    <img src="kollol-puja-samiti-logo.png" alt="Kollol Puja Samiti logo">
+    <div>
+      <div class="name">Kollol Puja Samiti</div>
+      <div class="eventName">BOTNIA DURGOTSAV · বটনিয়া দুর্গোৎসব</div>
+      <div class="sub">Gulshan Botnia · Sector 144, Noida</div>
+    </div>
+  </div>
+  <nav>
+    <button onclick="window.location.href='index.html'">Home</button>
+    <button onclick="window.location.href='index.html#puja'">The Puja</button>
+    <button class="communityActive" onclick="window.location.href='community.html'">Our Community</button>
+    <button onclick="window.location.href='index.html#memories'">Memories</button>
+    <button class="outline" onclick="window.location.href='index.html#archive'">Explore Archive</button>
+  </nav>
+</header>
 <section class="hero"><div class="wrap heroIn"><div class="eye">OUR COMMUNITY · আমাদের মানুষ</div><h1>The People <em>Behind the Puja.</em></h1><p>Botnia Durgotsav comes alive through the time, energy and spirit of people from our community. Together, they help turn a celebration into a shared tradition.</p></div></section>
 <main class="peopleSec"><div class="wrap"><div class="head"><div><div class="eye" style="color:#a32820">TOGETHER FOR BOTNIA DURGOTSAV</div><h2>One community.<br>Many hands.</h2></div><p>Every person here is presented equally—as part of the community that helps bring Botnia Durgotsav to life. No hierarchy, no titles; simply people contributing together to our shared Puja.</p></div><div class="people"><article class="person"><div class="monogram">AS</div><h3>Abhishek Shukhla</h3></article><article class="person"><div class="monogram">AK</div><h3>Amit Kumar Mukherjee</h3></article><article class="person"><div class="monogram">AD</div><h3>Anamika Das</h3></article><article class="person"><div class="monogram">AD</div><h3>Arpita Dey</h3></article><article class="person"><div class="monogram">AG</div><h3>Arya Ganguli</h3></article><article class="person"><div class="monogram">CM</div><h3>Carol Mitra</h3></article><article class="person"><div class="monogram">DD</div><h3>Debalina Das</h3></article><article class="person"><div class="monogram">DD</div><h3>Deepankar Dey</h3></article><article class="person"><div class="monogram">JK</div><h3>Jadav Kakoti</h3></article><article class="person"><div class="monogram">KM</div><h3>Kaushik Mitra</h3></article><article class="person"><div class="monogram">MD</div><h3>Mrinalini Das</h3></article><article class="person"><div class="monogram">PB</div><h3>Pravarna Bidisha</h3></article><article class="person"><div class="monogram">RB</div><h3>Ranjumani Barman</h3></article><article class="person"><div class="monogram">SM</div><h3>Santanu Malakar</h3></article><article class="person"><div class="monogram">SG</div><h3>Shantanu Gupta</h3></article><article class="person"><div class="monogram">SG</div><h3>Sheela Ghosh</h3></article><article class="person"><div class="monogram">SM</div><h3>Sheela Mukherjee</h3></article><article class="person"><div class="monogram">SG</div><h3>Shyamal Ghosh</h3></article></div></div></main>
 <section class="closing"><div class="en">Many hands. One community. One Puja.</div><div class="bn">অনেকের প্রচেষ্টা · একটাই পরিবার · আমাদের পুজো</div></section>
