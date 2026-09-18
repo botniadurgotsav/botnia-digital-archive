@@ -72,7 +72,62 @@ footer{text-align:center;padding:52px 20px;background:#231411;color:#d2c0b6;font
 @media(max-width:1000px){.years{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:650px){.hero{min-height:680px}.hero h1{font-size:44px}.years{grid-template-columns:1fr 1fr}.archiveTopline{display:block}.archiveHint{margin-top:8px}.modalTitle{font-size:19px}.modalCaption{font-size:13px}}
 
+
+/* ===== Launch Edition V3 — Sunday Launch ===== */
+:root{--wine:#721315;--wine2:#941b20;--gold2:#e0b35e}
+header{background:rgba(255,251,245,.94);backdrop-filter:blur(16px)}
+.hero{min-height:680px;background:#3b0909;overflow:hidden}
+.heroImg{background-position:68% 38%;background-size:cover;filter:saturate(1.08) contrast(1.04) brightness(.86);transform:scale(1.015)}
+.heroImg.ready{opacity:1}
+.hero:before{content:"";position:absolute;inset:0;z-index:1;background:
+ linear-gradient(90deg,rgba(35,4,5,.96) 0%,rgba(53,7,8,.88) 35%,rgba(53,7,8,.52) 58%,rgba(35,4,5,.10) 82%),
+ linear-gradient(0deg,rgba(34,4,5,.52),transparent 48%)}
+.hero:after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;background:
+ radial-gradient(circle at 12% 18%,rgba(219,167,77,.18),transparent 28%)}
+.shade{display:none}
+.heroIn{position:relative;z-index:3;padding:74px 0 66px;color:#fff}
+.hero .eyebrow,.hero .location{color:#f2d79d}
+.hero h1{font-size:clamp(54px,6.4vw,94px);line-height:.91;color:#fff;max-width:760px;letter-spacing:-.035em}
+.hero h1 em{color:#efc879}
+.hero .bnLine{color:#f7ead8}
+.hero p{color:#f4e8dc;max-width:610px;font-size:16px}
+.hero .primary{background:var(--wine2);border-color:#f3d79d;color:#fff}
+.hero .secondary{border-color:rgba(255,255,255,.7);color:#fff;background:rgba(70,10,10,.22)}
+.stats{border-top:1px solid rgba(255,255,255,.20);padding-top:24px;max-width:560px}
+.stat strong{color:#fff}.stat span{color:#ead5c5}
+.heroCredit{display:block;position:absolute;z-index:4;right:28px;bottom:18px;color:rgba(255,245,225,.72);font-size:9px;letter-spacing:.14em;text-transform:uppercase}
+.intro{margin-top:-32px;position:relative;z-index:5;background:rgba(255,252,247,.98);box-shadow:0 24px 70px rgba(53,12,9,.16)}
+.intro h2{font-size:clamp(38px,4.3vw,61px)}
+.journey{gap:10px}.ritual{background:#fffaf4;overflow:hidden;position:relative}
+.ritual:after{content:"";position:absolute;inset:auto 0 0;height:5px;background:var(--day);opacity:.75}
+.ritual:hover{transform:translateY(-4px);box-shadow:0 16px 36px rgba(80,30,18,.10)}
+.ritual .bn{font-size:29px}
+.dayStory{background:linear-gradient(135deg,#fffaf4,#fff 55%,#f8ede5)}
+.years{gap:12px}.year{background:#fffaf4}
+.year:hover{transform:translateY(-3px);box-shadow:0 14px 34px rgba(83,28,17,.09)}
+.archiveShell{background:#fffdf9}
+.grid.single .card{display:grid;grid-template-columns:minmax(320px,1.12fr) minmax(280px,.88fr);max-width:100%;overflow:hidden}
+.grid.single .visual{height:100%;min-height:330px}
+.grid.single .body{padding:34px 30px;display:flex;flex-direction:column;justify-content:center}
+.grid.single .title{font-size:34px;line-height:1.05}
+.card .visual img{transition:transform .5s ease}.card:hover .visual img{transform:scale(1.035)}
+.heritage{background:linear-gradient(120deg,#3a0808,#6b1012 58%,#8b221c);color:#fff;border:0}
+.heritage h2,.heritage p{color:#fff}.heritage .eyebrow{color:#efc879}
+.heritage .heritageStat strong{color:#f4d18d}.heritage .heritageStat span{color:#dbc6b8}
+.art{background:radial-gradient(circle at 50% 45%,rgba(236,192,108,.18),transparent 35%)}
+.art img{filter:drop-shadow(0 18px 30px rgba(0,0,0,.28))}
+footer{background:#3a0808;color:#eadbd0;border-top:1px solid rgba(239,200,121,.28)}
+footer b{color:#fff}.footerTag{color:#efc879}
+@media(max-width:760px){
+ .hero{min-height:700px}.heroImg{background-position:64% center}
+ .hero:before{background:linear-gradient(90deg,rgba(38,4,5,.94),rgba(48,6,7,.78) 62%,rgba(38,4,5,.35)),linear-gradient(0deg,rgba(34,4,5,.55),transparent)}
+ .hero h1{font-size:50px;max-width:92%}.hero p{max-width:90%}
+ .intro{margin-top:-20px}.grid.single .card{display:block}.grid.single .visual{min-height:260px}
+ .grid.single .body{padding:24px}.grid.single .title{font-size:28px}
+}
+
 </style>
+<meta name="archive-edition" content="Launch Edition V3">
 </head>
 <body>
 <div class="top">স্মৃতি · সংস্কৃতি · ঐতিহ্য — A Living Digital Archive of Botnia Durgotsav</div>
@@ -106,7 +161,7 @@ footer{text-align:center;padding:52px 20px;background:#231411;color:#d2c0b6;font
     <div class="actions"><button class="btn primary" onclick="toJourney()">Discover the Puja</button><button class="btn ghost" onclick="toMedia()">Explore Memories</button></div>
     <div class="stats"><div class="stat"><b id="sYears">—</b><span>Years archived</span></div><div class="stat"><b id="sVideos">—</b><span>Videos</span></div><div class="stat"><b id="sPhotos">—</b><span>Photographs</span></div></div>
   </div>
-</section>
+<div class="heroCredit">Authentic photograph from the Botnia Durgotsav archive</div></section>
 
 <main>
 <section class="section">
@@ -218,7 +273,16 @@ function years(){
  document.getElementById('years').innerHTML=html+`<div class="year" data-v="all" onclick="setYear('all')"><div class="arrow">↗</div><strong>All</strong><small>${S.media.length} ${S.media.length===1?'archived memory':'archived memories'}</small></div>`;
 }
 function stats(){const v=S.media.filter(x=>x.type==='video').length,p=S.media.filter(x=>x.type==='photo').length;[['sYears',ARCHIVE_YEARS.length],['sVideos',v],['sPhotos',p],['aYears',ARCHIVE_YEARS.length],['aMedia',S.media.length]].forEach(([i,n])=>{const e=document.getElementById(i);if(e)e.textContent=n})}
-function hero(){const x=S.media.find(x=>x.type==='photo'&&x.thumbnailLink)||S.media.find(x=>x.type==='photo')||S.media.find(x=>x.thumbnailLink);if(x){const e=document.getElementById('heroImg');const u=x.thumbnailLink||`https://drive.google.com/thumbnail?id=${encodeURIComponent(x.id)}&sz=w2000`;e.style.backgroundImage=`url("${u}")`;e.classList.add('ready')}}
+function hero(){
+ const HERO_ID='1Ay4lDhKNl0ty8aiB1McZlyO4yl0RV64Z';
+ const x=S.media.find(x=>x.id===HERO_ID)||S.media.find(x=>x.type==='photo');
+ if(!x)return;
+ const e=document.getElementById('heroImg');
+ let u=x.thumbnailLink||`https://drive.google.com/thumbnail?id=${encodeURIComponent(x.id)}&sz=w2000`;
+ if(/=s\d+$/i.test(u))u=u.replace(/=s\d+$/i,'=s2000');
+ e.style.backgroundImage=`url("${u}")`;
+ e.classList.add('ready');
+}
 function applyTheme(day){
  const t=THEMES[day]||THEMES.all,root=document.documentElement;
  root.style.setProperty('--day',t.day);root.style.setProperty('--day2',t.day2);root.style.setProperty('--daybg',t.bg);root.style.setProperty('--dayink',t.ink);
@@ -229,7 +293,7 @@ function render(){
  const a=S.media.filter(x=>(S.year==='all'||x.year===S.year)&&(S.type==='all'||x.type===S.type)&&(S.day==='all'||x.day===S.day)&&(!q||`${x.name} ${x.year} ${x.day} ${x.type}`.toLowerCase().includes(q))).sort((a,b)=>(parseInt(b.year)||0)-(parseInt(a.year)||0)||(b.modifiedTime||'').localeCompare(a.modifiedTime||''));
  const grid=document.getElementById('grid');grid.classList.toggle('single',a.length===1);S.visible=a;
  const rc=document.getElementById('resultCount');if(rc)rc.textContent=`${a.length} ${a.length===1?'memory':'memories'} in this view`;
- if(a.length){grid.innerHTML=a.map((x,i)=>`<article class="card" onclick="openMediaAt(${i})"><div class="visual">${x.thumbnailLink?`<img loading="lazy" src="${esc(x.thumbnailLink)}" alt="${esc(x.name)}">`:''}${x.type==='video'?'<div class="play">▶</div>':'<div class="badge">PHOTO</div>'}</div><div class="body"><span class="cardYear">${esc(x.year==='previous'?'Heritage Collection':x.year+(x.day&&x.day!=='Previous Years'?' · '+x.day:''))}</span><div class="title">${esc(displayTitle(x))}</div><div class="caption">${esc(displayCaption(x))}</div><div class="meta">${esc(x.type)} · Botnia Durgotsav</div></div></article>`).join('')}
+ if(a.length){grid.innerHTML=a.map((x,i)=>`<article class="card" onclick="openMediaAt(${i})"><div class="visual">${x.thumbnailLink?`<img loading="lazy" src="${esc((x.thumbnailLink||'').replace(/=s\d+$/i,'=s1200'))}" alt="${esc(displayTitle(x))}">`:''}${x.type==='video'?'<div class="play">▶</div>':'<div class="badge">PHOTO</div>'}</div><div class="body"><span class="cardYear">${esc(x.year==='previous'?'Heritage Collection':x.year+(x.day&&x.day!=='Previous Years'?' · '+x.day:''))}</span><div class="title">${esc(displayTitle(x))}</div><div class="caption">${esc(displayCaption(x))}</div><div class="meta">${esc(x.type)} · Botnia Durgotsav</div></div></article>`).join('')}
  else if(S.day!=='all'&&!q){const e=EMPTY[S.day]||['স্মৃতি শীঘ্রই এখানে যোগ হবে','Memories are yet to be added.','This chapter will grow as new photographs and videos are added.'];grid.innerHTML=`<div class="empty"><div class="bnEmpty">${e[0]}</div><b>${e[1]}</b><p>${e[2]}</p><button onclick="event.stopPropagation();setDay('all')">Explore all memories →</button></div>`}
  else{grid.innerHTML='<div class="empty"><b>No memories match these filters.</b><p>Try another year, Puja day, media type or search term.</p></div>'}
 }
