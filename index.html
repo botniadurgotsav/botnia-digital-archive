@@ -266,8 +266,13 @@ footer .footerDetails{font-size:11px;line-height:1.6}
   .grid.single .body{padding:22px}
 }
 
+
+.communityCta{margin-top:24px;padding-top:20px;border-top:1px solid #ead9ca;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.communityCta span{font-size:9px;font-weight:900;letter-spacing:.16em;color:#a67655}
+.communityCta a{font:italic 19px Georgia,serif;color:var(--wine);text-decoration:none}
+.communityCta a:hover{text-decoration:underline;text-underline-offset:4px}
 </style>
-<meta name="archive-edition" content="Launch Edition V4 Final">
+<meta name="archive-edition" content="Launch Edition V4 Final + Community + Clean Titles">
 </head>
 <body>
 <div class="top">স্মৃতি · সংস্কৃতি · ঐতিহ্য — A Living Digital Archive of Botnia Durgotsav</div>
@@ -309,7 +314,7 @@ footer .footerDetails{font-size:11px;line-height:1.6}
     <div><div class="kicker">Our Durgotsav</div><div class="introMark">More than a festival.<br>A community tradition.</div></div>
     <p><strong>Botnia Durgotsav</strong>, presented by Kollol Puja Samiti for the <strong>Gulshan Botnia community, Sector 144, Noida</strong>, brings our neighbourhood together through devotion, ritual, culture and celebration. From Gautam Buddha Nagar, Uttar Pradesh, this digital heritage archive preserves those moments while helping visitors from every culture understand the meaning behind Bengal's Durga Puja traditions.</p>
   </div>
-</section>
+<div class="communityCta"><span>COMMUNITY</span><a href="community.html">Meet the people behind Botnia Durgotsav <b>→</b></a></div></section>
 
 <section id="journey" class="section">
   <div class="head"><div><div class="kicker">Understanding Durga Puja</div><h2>Journey through the Puja</h2></div><p>Six chapters trace the journey from the invocation of the Goddess to the emotion of Bijoya. Choose a day to learn its significance and enter its memories.</p></div>
@@ -388,8 +393,6 @@ const js=s=>String(s??'').replace(/\\/g,'\\\\').replace(/'/g,"\\'").replace(/\r?
 function isMachineFilename(name){return /^[0-9a-f]{8}-[0-9a-f-]{20,}\.(jpe?g|png|webp|heic)$/i.test(String(name||'').trim())}
 function cleanWords(name){return String(name||'').replace(/\.[^.]+$/,'').replace(/[_-]+/g,' ').replace(/\s+/g,' ').trim()}
 function displayTitle(x){
- const cleaned=cleanWords(x.name);
- if(!isMachineFilename(x.name)&&cleaned&&!/^(img|dsc|pxl|vid)\s*\d*$/i.test(cleaned))return cleaned;
  const y=x.year==='previous'?'Heritage':x.year;
  const d=x.day&&x.day!=='Previous Years'?x.day:'Botnia Durgotsav';
  return `${d} · ${y} — ${x.type==='video'?'Video':'Photo'} Memory`;
