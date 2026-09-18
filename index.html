@@ -126,8 +126,148 @@ footer b{color:#fff}.footerTag{color:#efc879}
  .grid.single .body{padding:24px}.grid.single .title{font-size:28px}
 }
 
+
+/* ===== Launch Edition V4 — Final Launch Candidate ===== */
+
+/* 1. Hero: keep Maa Durga as the focal subject while protecting headline readability */
+.heroImg{
+  background-position:72% 34%;
+  background-size:cover;
+}
+.hero:before{
+  background:
+    linear-gradient(90deg,
+      rgba(35,4,5,.97) 0%,
+      rgba(50,6,7,.91) 31%,
+      rgba(50,6,7,.66) 49%,
+      rgba(35,4,5,.22) 70%,
+      rgba(35,4,5,.08) 100%),
+    linear-gradient(0deg,rgba(34,4,5,.48),transparent 46%);
+}
+.heroIn{max-width:1180px}
+.hero h1{max-width:720px}
+.hero p{max-width:590px}
+.heroCredit{
+  right:24px;
+  bottom:16px;
+  padding:6px 9px;
+  border-radius:999px;
+  background:rgba(35,4,5,.34);
+  backdrop-filter:blur(5px);
+}
+
+/* 2. More compact section rhythm */
+main{padding-top:0}
+.section{margin-bottom:60px}
+.intro{margin-bottom:62px}
+.journey{margin-bottom:18px}
+.dayStory{margin-top:16px}
+.years{margin-top:20px}
+.archiveShell{margin-top:20px}
+
+/* 3. Puja journey — more editorial, without invented archive imagery */
+.ritual{
+  min-height:178px;
+  padding:20px 15px 22px;
+  background:
+    radial-gradient(circle at 88% 12%,rgba(217,177,104,.11),transparent 28%),
+    #fffaf4;
+}
+.ritual .step{margin-bottom:14px}
+.ritual .bn{line-height:1.05}
+.ritual small{display:block;margin-top:14px;line-height:1.55}
+.ritual.active{
+  background:
+    radial-gradient(circle at 88% 12%,rgba(217,177,104,.18),transparent 31%),
+    #fff8ee;
+}
+
+/* 4. Archive: preserve V3 but improve visual finish */
+.archiveShell{
+  border-color:#ead8c8;
+  box-shadow:0 20px 58px rgba(78,31,19,.07);
+}
+.grid.single .visual{min-height:350px}
+.grid.single .body{padding:38px 32px}
+.cardYear{
+  display:inline-block;
+  width:max-content;
+  padding:5px 9px;
+  border-radius:999px;
+  background:#fbf0e3;
+}
+.caption{max-width:520px}
+.meta{margin-top:16px}
+
+/* 5. Heritage: one decisive closing panel, followed by a compact footer */
+.heritage{
+  margin-top:40px;
+  margin-bottom:0;
+  min-height:430px;
+  border-radius:28px;
+  overflow:hidden;
+}
+.heritageCopy{padding:48px 50px}
+.heritage h2{
+  max-width:660px;
+  font-size:clamp(42px,4.6vw,66px);
+  line-height:.98;
+}
+.heritage p{max-width:690px}
+.art:after{
+  bottom:34px;
+  font-size:22px;
+}
+footer{
+  margin-top:44px;
+  padding:34px 20px 36px;
+  min-height:0;
+}
+footer img{width:58px!important;height:58px!important}
+footer b{font-size:17px}
+.footerTag{
+  margin:5px 0 10px;
+  font-size:16px;
+}
+footer .footerDetails{font-size:11px;line-height:1.6}
+
+/* 6. Responsive launch safeguards */
+@media(max-width:1000px){
+  .heroImg{background-position:69% 34%}
+  .hero h1{max-width:650px}
+  .heritageCopy{padding:42px 38px}
+}
+@media(max-width:760px){
+  .hero{min-height:720px}
+  .heroImg{background-position:66% center}
+  .hero:before{
+    background:
+      linear-gradient(90deg,rgba(35,4,5,.95),rgba(44,5,6,.78) 66%,rgba(35,4,5,.38)),
+      linear-gradient(0deg,rgba(34,4,5,.58),transparent 52%);
+  }
+  .heroIn{padding:58px 0 54px}
+  .hero h1{font-size:clamp(45px,13vw,60px);max-width:95%}
+  .hero p{max-width:96%}
+  .heroCredit{display:none}
+  .section{margin-bottom:48px}
+  .intro{margin-bottom:50px}
+  .heritage{min-height:0;border-radius:22px}
+  .heritageCopy{padding:34px 26px}
+  .heritage h2{font-size:42px}
+  footer{margin-top:28px;padding:28px 18px}
+}
+@media(max-width:480px){
+  .hero{min-height:690px}
+  .heroImg{background-position:63% center}
+  .hero h1{font-size:43px}
+  .years{grid-template-columns:1fr 1fr}
+  .year{min-height:126px}
+  .grid.single .visual{min-height:235px}
+  .grid.single .body{padding:22px}
+}
+
 </style>
-<meta name="archive-edition" content="Launch Edition V3">
+<meta name="archive-edition" content="Launch Edition V4 Final">
 </head>
 <body>
 <div class="top">স্মৃতি · সংস্কৃতি · ঐতিহ্য — A Living Digital Archive of Botnia Durgotsav</div>
@@ -273,6 +413,7 @@ function years(){
  document.getElementById('years').innerHTML=html+`<div class="year" data-v="all" onclick="setYear('all')"><div class="arrow">↗</div><strong>All</strong><small>${S.media.length} ${S.media.length===1?'archived memory':'archived memories'}</small></div>`;
 }
 function stats(){const v=S.media.filter(x=>x.type==='video').length,p=S.media.filter(x=>x.type==='photo').length;[['sYears',ARCHIVE_YEARS.length],['sVideos',v],['sPhotos',p],['aYears',ARCHIVE_YEARS.length],['aMedia',S.media.length]].forEach(([i,n])=>{const e=document.getElementById(i);if(e)e.textContent=n})}
+/* PINNED LAUNCH HERO: genuine Botnia Durgotsav archive photograph */
 function hero(){
  const HERO_ID='1Ay4lDhKNl0ty8aiB1McZlyO4yl0RV64Z';
  const x=S.media.find(x=>x.id===HERO_ID)||S.media.find(x=>x.type==='photo');
