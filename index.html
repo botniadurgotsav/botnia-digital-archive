@@ -419,7 +419,9 @@ function years(){
 function stats(){const v=S.media.filter(x=>x.type==='video').length,p=S.media.filter(x=>x.type==='photo').length;[['sYears',ARCHIVE_YEARS.length],['sVideos',v],['sPhotos',p],['aYears',ARCHIVE_YEARS.length],['aMedia',S.media.length]].forEach(([i,n])=>{const e=document.getElementById(i);if(e)e.textContent=n})}
 /* PINNED LAUNCH HERO: genuine Botnia Durgotsav archive photograph */
 function hero(){
- const HERO_ID='1Ay4lDhKNl0ty8aiB1McZlyO4yl0RV64Z';
+ const DURGA_HERO_IDS = ["1G7Wr2_IE4dNFPVpRO2_h3od8TsOPanHV", "1dRECP32nfllzw0DiVuFwcayE4a9K0DV5", "1D65TJaXxtufoN8cRtTrRdQNuMIAWWEZf", "180J2o4wZBRO2iRoebE9plVCVbDWpPND3", "1BZrDuNEFATk2K7sceTvK9lh66Br8cjNc", "1rku65w-bXiDP_OcTb34FbJrfPr9iNCam", "1q76RS17g0RfSBYPgOWg6d7cBtW34WSFG", "1l7oIliR0weoK550R6tjmPrAMUp46rPli", "11wPsCbzcTOpLG4726EMkyHzBwE_fqJG7", "1nvHDZ7b_5WGNlxoNKeI830T7BTN0Y1V-", "1Vwx3qMwf6ZCLgvgBAiaDwkrZ0h3LvN7R"];
+const HERO_ID = DURGA_HERO_IDS[Math.floor(Math.random()*DURGA_HERO_IDS.length)];
+const approvedHeroUrl=`https://drive.google.com/thumbnail?id=${HERO_ID}&sz=w2400`;
  const x=S.media.find(x=>x.id===HERO_ID)||S.media.find(x=>x.type==='photo');
  if(!x)return;
  const e=document.getElementById('heroImg');
