@@ -23,6 +23,7 @@ img{max-width:100%}
 header{height:88px;display:flex;align-items:center;padding:0 5%;position:sticky;top:0;z-index:30;background:rgba(255,250,242,.96);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
 .brand{display:flex;align-items:center;gap:13px}.brand img{width:58px;height:58px;object-fit:contain}.name{font:700 18px Georgia,serif;color:var(--deep)}.eventName{font:800 13px/1.15 Georgia,serif;color:var(--red);letter-spacing:.055em;margin-top:2px}.sub{font-size:8px;letter-spacing:.11em;color:var(--muted);margin-top:4px;text-transform:uppercase}
 nav{margin-left:auto;display:flex;gap:22px;align-items:center}nav button{border:0;background:none;color:#5d4b41;font-weight:700;font-size:12px}.outline{border:1px solid var(--red)!important;border-radius:999px!important;padding:10px 15px!important;color:var(--red)!important}
+.curatorLink{width:36px;height:36px;display:grid;place-items:center;border:1px solid rgba(139,30,24,.28);border-radius:50%;color:var(--red,#8b1e18);background:rgba(255,255,255,.52);text-decoration:none;transition:.2s;flex:0 0 auto}.curatorLink:hover{background:#fff;border-color:var(--red,#8b1e18);transform:translateY(-1px)}.curatorLink svg{width:16px;height:16px;fill:currentColor}@media(max-width:650px){.curatorLink{width:34px;height:34px}.curatorLink svg{width:15px;height:15px}}
 .hero{min-height:650px;position:relative;display:grid;align-items:end;overflow:hidden;background:radial-gradient(circle at 80% 18%,rgba(210,164,74,.28),transparent 28%),linear-gradient(120deg,#330706,#74130f 52%,#b34a2e)}
 .heroImg{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:.7s}.heroImg.ready{opacity:.44}.shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(38,4,4,.96) 0%,rgba(38,4,4,.78) 46%,rgba(38,4,4,.20)),linear-gradient(0deg,rgba(38,4,4,.7),transparent 60%)}
 .alpana{position:absolute;width:340px;height:340px;border:1px solid rgba(255,240,210,.15);border-radius:50%;right:-80px;top:110px;box-shadow:0 0 0 28px rgba(255,240,210,.025),0 0 0 58px rgba(255,240,210,.018)}
@@ -292,6 +293,7 @@ footer .footerDetails{font-size:11px;line-height:1.6}
         <button onclick="window.location.href='community.html'">Our Community</button>
     <button onclick="toMedia()">Memories</button>
     <button class="outline" onclick="toArchive()">Explore Archive</button>
+    <a class="curatorLink" href="https://botnia-curator-review.botniadurgotsav.workers.dev/" target="_blank" rel="noopener noreferrer" title="Curator Review" aria-label="Curator Review"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17 8h-1V6a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-9a2 2 0 0 0-2-2Zm-7-2a2 2 0 1 1 4 0v2h-4V6Zm3 9.73V18h-2v-2.27a2 2 0 1 1 2 0Z"/></svg></a>
   </nav>
 </header>
 
